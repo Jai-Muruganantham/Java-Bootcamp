@@ -5,4 +5,5 @@ CREATE TABLE nanny (
     message VARCHAR(255) NOT NULL,
     start_Time TIMESTAMP NOT NULL,
     end_Time TIMESTAMP NOT NULL
+
 );
