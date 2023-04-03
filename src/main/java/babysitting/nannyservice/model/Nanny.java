@@ -14,9 +14,9 @@ public class Nanny {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private String contact;
-    private LocalDateTime availableFrom;
-    private LocalDateTime availableTo;
+    private String message;
+    private LocalDateTime start_Time;
+    private LocalDateTime end_Time;
 
     // Constructors, Getters, and Setters
 
@@ -36,28 +36,28 @@ public class Nanny {
         this.name = name;
     }
 
-    public String getContact() {
-        return contact;
+    public String getMessage() {
+        return message;
     }
 
-    public void setContact(String contact) {
-        this.contact = contact;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
-    public LocalDateTime getAvailableFrom() {
-        return availableFrom;
+    public LocalDateTime getStart_Time() {
+        return start_Time;
     }
 
-    public void setAvailableFrom(LocalDateTime availableFrom) {
-        this.availableFrom = availableFrom;
+    public void setStart_Time(LocalDateTime start_Time) {
+        this.start_Time = start_Time;
     }
 
-    public LocalDateTime getAvailableTo() {
-        return availableTo;
+    public LocalDateTime getEnd_Time() {
+        return end_Time;
     }
 
-    public void setAvailableTo(LocalDateTime availableTo) {
-        this.availableTo = availableTo;
+    public void setEnd_Time(LocalDateTime end_Time) {
+        this.end_Time = end_Time;
     }
 
     @Override
@@ -65,9 +65,9 @@ public class Nanny {
         return "Nanny{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", contact='" + contact + '\'' +
-                ", availableFrom=" + availableFrom +
-                ", availableTo=" + availableTo +
+                ", message='" + message + '\'' +
+                ", start_Time=" + start_Time +
+                ", end_Time=" + end_Time +
                 '}';
     }
 }
