@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Nanny Booking</title>
+</head>
+<body>
+<h1>Nanny List</h1>
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Contact</th>
+    <th>Available From</th>
+    <th>Available To</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="nanny : ${nannies}">
+    <td th:text="${nanny.id}"></td>
+    <td th:text="${nanny.name}"></td>
+    <td th:text="${nanny.contact}"></td>
+    <td th:text="${nanny.availableFrom}"></td>
+    <td th:text="${nanny.availableTo}"></td>
+  </tr>
+  </tbody>
+</table>
+<a href="/nannies/add">Add Nanny</a>
+</body>
+</html>
