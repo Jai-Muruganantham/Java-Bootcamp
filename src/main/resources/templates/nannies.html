@@ -10,21 +10,21 @@
     <thead>
     <tr>
         <th>ID</th>
-        <th>First Name</th>
-        <th>Last Name</th>
+        <th>Name</th>
+        <th>Surname</th>
         <th>Qualification</th>
-        <th>Location City</th>
+        <th>City</th>
         <th>User ID</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="nanny : ${nannies}">
         <td th:text="${nanny.id}"></td>
-        <td th:text="${nanny.firstName}"></td>
-        <td th:text="${nanny.lastName}"></td>
+        <td th:text="${nanny.name}"></td>
+        <td th:text="${nanny.surname}"></td>
         <td th:text="${nanny.qualification}"></td>
-        <td th:text="${nanny.locationCity}"></td>
-        <td th:text="${nanny.userId}"></td>
+        <td th:text="${nanny.city}"></td>
+        <td th:text="${nanny.userid}"></td>
     </tr>
     </tbody>
 </table>

@@ -12,19 +12,19 @@ import jakarta.persistence.*;
         @Column(name = "id")
         private Long id;
 
-        @Column(name = "firstName", nullable = false)
+        @Column(name = "name", nullable = false)
         private String firstName;
 
-        @Column(name = "lastName", nullable = false)
+        @Column(name = "surname", nullable = false)
         private String lastName;
 
         @Column(name = "qualification", nullable = false)
         private String qualification;
 
-        @Column(name = "locationCity", nullable = false)
+        @Column(name = "city", nullable = false)
         private String locationCity;
 
-        @Column (name = "userId", nullable = false)
+        @Column (name = "userid", nullable = false)
         private Long userId;
 
       //  @OneToOne
