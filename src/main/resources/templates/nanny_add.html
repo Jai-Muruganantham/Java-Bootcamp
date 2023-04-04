@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Nanny</title>
+</head>
+<body>
+<h1>Book Nanny</h1>
+<form th:action="@{/bookings/add}" th:object="${bookings}" method="post">
+  <label for="name">Name:</label>
+  <input type="text" id="name" th:field="*{name}" required>
+  <br>
+
+  <label for="message">Message:</label>
+  <input type="text" id="message" th:field="*{message}" required>
+  <br>
+
+  <label for="start_Time">Start Time:</label>
+  <input type="datetime-local" id="start_Time" th:field="*{start_Time}" required>
+  <br>
+
+  <label for="end_Time">End Time:</label>
+  <input type="datetime-local" id="end_Time" th:field="*{end_Time}" required>
+  <br>
+
+  <input type="submit" value="Book Nanny">
+</form>
+</body>
+</html>
