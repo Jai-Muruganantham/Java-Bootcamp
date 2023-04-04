@@ -19,11 +19,11 @@ public class WelcomeController {
         this.showAllNanniesService = showAllNanniesService;
     }
     @GetMapping("/welcome")
-    public String welcome() {
+    public String home() {
         return "welcome";
     }
 
-    @GetMapping("/nanniesTable")
+    @GetMapping("/table")
     public String getsShowALlNannies(Model model) {
         List<Nanny> nannies = showAllNanniesService.getNannies();
         model.addAttribute("nannies", nannies);
