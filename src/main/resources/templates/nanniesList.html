@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Nannies</title>
+</head>
+<body>
+<h1>Nannies</h1>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Qualification</th>
+        <th>City</th>
+        <th>User ID</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="nanny : ${nannies}">
+        <td th:text="${nanny.id}"></td>
+        <td th:text="${nanny.name}"></td>
+        <td th:text="${nanny.surname}"></td>
+        <td th:text="${nanny.qualification}"></td>
+        <td th:text="${nanny.city}"></td>
+        <td th:text="${nanny.userid}"></td>
+    </tr>
+    </tbody>
+</table>
+<br>
+<a href="/welcome">Back to menu</a>
+</body>
+</html>
