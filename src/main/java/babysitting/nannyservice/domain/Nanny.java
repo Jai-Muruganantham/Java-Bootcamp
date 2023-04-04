@@ -24,19 +24,21 @@ import jakarta.persistence.*;
         @Column(name = "location_city", nullable = false)
         private String locationCity;
 
-        @OneToOne
-        @JoinColumn(name = "user_id") //check if annotation ok
-        private User user;
+      //  @OneToOne
+      //  @JoinColumn(name = "user_id") //check if annotation ok
+      //  private User user;
 
+        @Column (name = "user_id", nullable = false)
+        private Long user_id;
 
         public Nanny() {}
 
-        public Nanny(String firstName, String lastName, String qualification, String locationCity, User user) {
+        public Nanny(String firstName, String lastName, String qualification, String locationCity, Long user_id) {
             this.firstName = firstName;
             this.lastName = lastName;
             this.qualification = qualification;
             this.locationCity = locationCity;
-            this.user = user;
+            this.user_id = user_id;
         }
 
 
@@ -80,12 +82,24 @@ import jakarta.persistence.*;
             this.locationCity = locationCity;
         }
 
-        public User getUser() {
-            return user;
+        public Long getUser_id() {
+            return user_id;
         }
 
-        public void setUser(User user) {
-            this.user = user;
+        public void setUser_id(Long user_id) {
+            this.user_id = user_id;
+        }
+
+        @Override
+        public String toString() {
+            return "Nanny{" +
+                    "id=" + id +
+                    ", firstName='" + firstName + '\'' +
+                    ", lastName='" + lastName + '\'' +
+                    ", qualification='" + qualification + '\'' +
+                    ", locationCity='" + locationCity + '\'' +
+                    ", user_id=" + user_id +
+                    '}';
         }
     }
 
