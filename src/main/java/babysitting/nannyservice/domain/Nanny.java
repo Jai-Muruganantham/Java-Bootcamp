@@ -13,19 +13,19 @@ import jakarta.persistence.*;
         private Long id;
 
         @Column(name = "name", nullable = false)
-        private String firstName;
+        private String name;
 
         @Column(name = "surname", nullable = false)
-        private String lastName;
+        private String surname;
 
         @Column(name = "qualification", nullable = false)
         private String qualification;
 
         @Column(name = "city", nullable = false)
-        private String locationCity;
+        private String city;
 
         @Column (name = "userid", nullable = false)
-        private Long userId;
+        private Long userid;
 
       //  @OneToOne
       //  @JoinColumn(name = "user_id") //check if annotation ok
@@ -35,13 +35,13 @@ import jakarta.persistence.*;
 
         public Nanny() {}
 
-        public Nanny(Long id, String firstName, String lastName, String qualification, String locationCity, Long userId) {
+        public Nanny(Long id, String name, String surname, String qualification, String city, Long userid) {
             this.id = id;
-            this.firstName = firstName;
-            this.lastName = lastName;
+            this.name = name;
+            this.surname = surname;
             this.qualification = qualification;
-            this.locationCity = locationCity;
-            this.userId = userId;
+            this.city = city;
+            this.userid = userid;
         }
 
         public Long getId() {
@@ -52,20 +52,20 @@ import jakarta.persistence.*;
             this.id = id;
         }
 
-        public String getFirstName() {
-            return firstName;
+        public String getName() {
+            return name;
         }
 
-        public void setFirstName(String firstName) {
-            this.firstName = firstName;
+        public void setName(String name) {
+            this.name = name;
         }
 
-        public String getLastName() {
-            return lastName;
+        public String getSurname() {
+            return surname;
         }
 
-        public void setLastName(String lastName) {
-            this.lastName = lastName;
+        public void setSurname(String surname) {
+            this.surname = surname;
         }
 
         public String getQualification() {
@@ -76,31 +76,31 @@ import jakarta.persistence.*;
             this.qualification = qualification;
         }
 
-        public String getLocationCity() {
-            return locationCity;
+        public String getCity() {
+            return city;
         }
 
-        public void setLocationCity(String locationCity) {
-            this.locationCity = locationCity;
+        public void setCity(String city) {
+            this.city = city;
         }
 
-        public Long getUserId() {
-            return userId;
+        public Long getUserid() {
+            return userid;
         }
 
-        public void setUserId(Long userId) {
-            this.userId = userId;
+        public void setUserid(Long userid) {
+            this.userid = userid;
         }
 
         @Override
         public String toString() {
             return "Nanny{" +
                     "id=" + id +
-                    ", firstName='" + firstName + '\'' +
-                    ", lastName='" + lastName + '\'' +
+                    ", name='" + name + '\'' +
+                    ", surname='" + surname + '\'' +
                     ", qualification='" + qualification + '\'' +
-                    ", locationCity='" + locationCity + '\'' +
-                    ", userId=" + userId +
+                    ", city='" + city + '\'' +
+                    ", userid=" + userid +
                     '}';
         }
     }

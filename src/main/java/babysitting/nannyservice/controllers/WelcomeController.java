@@ -12,22 +12,9 @@ import java.util.List;
 @Controller
 public class WelcomeController {
 
-    private final ShowAllNanniesService showAllNanniesService;
-
-    @Autowired
-    public WelcomeController(ShowAllNanniesService showAllNanniesService) {
-        this.showAllNanniesService = showAllNanniesService;
-    }
     @GetMapping("/welcome")
     public String home() {
         return "welcome";
-    }
-
-    @GetMapping("/showAllNannies")
-    public String getsShowALlNannies(Model model) {
-        List<Nanny> nannies = showAllNanniesService.getNannies();
-        model.addAttribute("nannies", nannies);
-        return "nannies";
     }
 
 }
