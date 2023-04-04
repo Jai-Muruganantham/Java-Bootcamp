@@ -1,4 +1,4 @@
-package babysitting.nannyservice.model;
+package babysitting.nannyservice.domain;
 
 
 import jakarta.persistence.Entity;

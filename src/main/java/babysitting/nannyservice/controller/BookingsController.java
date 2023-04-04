@@ -1,6 +1,6 @@
 package babysitting.nannyservice.controller;
 
-import babysitting.nannyservice.model.Bookings;
+import babysitting.nannyservice.domain.Bookings;
 import babysitting.nannyservice.service.BookingsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
