@@ -17,15 +17,15 @@
   </tr>
   </thead>
   <tbody>
-  <tr th:each="nanny : ${nannies}">
-    <td th:text="${nanny.id}"></td>
-    <td th:text="${nanny.name}"></td>
-    <td th:text="${nanny.message}"></td>
-    <td th:text="${nanny.start_Time}"></td>
-    <td th:text="${nanny.end_Time}"></td>
+  <tr th:each="bookings : ${bookings}">
+    <td th:text="${bookings.id}"></td>
+    <td th:text="${bookings.name}"></td>
+    <td th:text="${bookings.message}"></td>
+    <td th:text="${bookings.start_Time}"></td>
+    <td th:text="${bookings.end_Time}"></td>
   </tr>
   </tbody>
 </table>
-<a href="/nannies/add">Add Nanny</a>
+<a href="/bookings/add">Add Nanny</a>
 </body>
 </html>

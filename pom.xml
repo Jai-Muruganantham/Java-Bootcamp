@@ -12,7 +12,7 @@
 	<artifactId>nannyservice</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>nannyservice</name>
-	<description>A project for finding nanny to take care.</description>
+	<description>A project for finding bookings to take care.</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>

@@ -9,7 +9,7 @@ import jakarta.persistence.Id;
 import java.time.LocalDateTime;
 
 @Entity
-public class Nanny {
+public class Bookings {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -62,7 +62,7 @@ public class Nanny {
 
     @Override
     public String toString() {
-        return "Nanny{" +
+        return "Bookings{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", message='" + message + '\'' +
