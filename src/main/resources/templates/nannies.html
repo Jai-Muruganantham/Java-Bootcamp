@@ -2,10 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>List of Nannies</title>
+    <title>Nannies</title>
 </head>
 <body>
-<h1>List of Nannies</h1>
+<h1>Nannies</h1>
 <table>
     <thead>
     <tr>
@@ -14,20 +14,19 @@
         <th>Last Name</th>
         <th>Qualification</th>
         <th>Location City</th>
+        <th>User ID</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="nanny : ${nannies}">
         <td th:text="${nanny.id}"></td>
-        <td th:text="${nanny.first_name}"></td>
-        <td th:text="${nanny.last_name}"></td>
+        <td th:text="${nanny.firstName}"></td>
+        <td th:text="${nanny.lastName}"></td>
         <td th:text="${nanny.qualification}"></td>
-        <td th:text="${nanny.location_city}"></td>
-        <td th:text="${nanny.user_id}"></td>
+        <td th:text="${nanny.locationCity}"></td>
+        <td th:text="${nanny.userId}"></td>
     </tr>
     </tbody>
 </table>
-<br>
-<a href="/welcome">Back to menu</a>
 </body>
 </html>

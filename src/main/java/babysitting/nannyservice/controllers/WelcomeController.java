@@ -23,11 +23,11 @@ public class WelcomeController {
         return "welcome";
     }
 
-    @GetMapping("/table")
+    @GetMapping("/showAllNannies")
     public String getsShowALlNannies(Model model) {
         List<Nanny> nannies = showAllNanniesService.getNannies();
         model.addAttribute("nannies", nannies);
-        return "nanniesTable";
+        return "nannies";
     }
 
 }

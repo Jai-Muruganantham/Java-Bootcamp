@@ -12,35 +12,37 @@ import jakarta.persistence.*;
         @Column(name = "id")
         private Long id;
 
-        @Column(name = "first_name", nullable = false)
+        @Column(name = "firstName", nullable = false)
         private String firstName;
 
-        @Column(name = "last_name", nullable = false)
+        @Column(name = "lastName", nullable = false)
         private String lastName;
 
         @Column(name = "qualification", nullable = false)
         private String qualification;
 
-        @Column(name = "location_city", nullable = false)
+        @Column(name = "locationCity", nullable = false)
         private String locationCity;
+
+        @Column (name = "userId", nullable = false)
+        private Long userId;
 
       //  @OneToOne
       //  @JoinColumn(name = "user_id") //check if annotation ok
       //  private User user;
 
-        @Column (name = "user_id", nullable = false)
-        private Long user_id;
+
 
         public Nanny() {}
 
-        public Nanny(String firstName, String lastName, String qualification, String locationCity, Long user_id) {
+        public Nanny(Long id, String firstName, String lastName, String qualification, String locationCity, Long userId) {
+            this.id = id;
             this.firstName = firstName;
             this.lastName = lastName;
             this.qualification = qualification;
             this.locationCity = locationCity;
-            this.user_id = user_id;
+            this.userId = userId;
         }
-
 
         public Long getId() {
             return id;
@@ -82,12 +84,12 @@ import jakarta.persistence.*;
             this.locationCity = locationCity;
         }
 
-        public Long getUser_id() {
-            return user_id;
+        public Long getUserId() {
+            return userId;
         }
 
-        public void setUser_id(Long user_id) {
-            this.user_id = user_id;
+        public void setUserId(Long userId) {
+            this.userId = userId;
         }
 
         @Override
@@ -98,7 +100,7 @@ import jakarta.persistence.*;
                     ", lastName='" + lastName + '\'' +
                     ", qualification='" + qualification + '\'' +
                     ", locationCity='" + locationCity + '\'' +
-                    ", user_id=" + user_id +
+                    ", userId=" + userId +
                     '}';
         }
     }
