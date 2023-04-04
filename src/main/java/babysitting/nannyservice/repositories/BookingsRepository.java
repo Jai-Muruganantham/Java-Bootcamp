@@ -1,4 +1,4 @@
-package babysitting.nannyservice.repository;
+package babysitting.nannyservice.repositories;
 
 
 import babysitting.nannyservice.domain.Bookings;

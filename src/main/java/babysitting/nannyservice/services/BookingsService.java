@@ -1,9 +1,9 @@
-package babysitting.nannyservice.service;
+package babysitting.nannyservice.services;
 
 import babysitting.nannyservice.domain.Bookings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import babysitting.nannyservice.repository.BookingsRepository;
+import babysitting.nannyservice.repositories.BookingsRepository;
 import java.util.List;
 
 @Service
