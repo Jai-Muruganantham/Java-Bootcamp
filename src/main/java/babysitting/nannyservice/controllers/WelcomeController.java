@@ -16,5 +16,9 @@ public class WelcomeController {
     public String home() {
         return "welcome";
     }
+    @GetMapping("/api/v1/auth/register")
+    public String login() {
+        return "welcome";
+    }
 
 }
