@@ -3,13 +3,13 @@ package babysitting.nannyservice.services;
 import babysitting.nannyservice.domain.Bookings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import babysitting.nannyservice.repositories.BookingsRepository;
+import babysitting.nannyservice.repositories.JpaBookingsRepository;
 import java.util.List;
 
 @Service
 public class BookingsService {
     @Autowired
-    private BookingsRepository bookingsRepository;
+    private JpaBookingsRepository bookingsRepository;
 
     public List<Bookings> findAll() {
         return bookingsRepository.findAll();

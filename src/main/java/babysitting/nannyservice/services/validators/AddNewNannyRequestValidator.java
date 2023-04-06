@@ -1,4 +1,4 @@
 package babysitting.nannyservice.services.validators;
 
-public class RequestValidatorAddNewNanny {
+public class AddNewNannyRequestValidator {
 }

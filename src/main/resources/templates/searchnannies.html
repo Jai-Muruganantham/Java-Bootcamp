@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Nanny Search</title>
+    <style>
+        body {
+            font-family: Calibri, sans-serif;
+        }
+        h1 {
+            font-size: 1.2em;
+        }
+        h2 {
+            font-size: 1.2em;
+            background-color: #d4ebf2;
+            padding: 5px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+<h2>Find nanny by a city </h2>
+<form action="#" th:action="@{/searchNannies}" th:object="${request}" method="post">
+    <label for="city">City:</label>
+    <input type="text" id="city" th:field="*{city}" />
+    <button type="submit">Search</button>
+    <button type="button" onclick="clearInput()">Clear</button>
+</form>
+
+<div th:if="${nannies != null}">
+    <h2>Found Nannies:</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Qualification</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="nanny : ${nannies}">
+            <td>
+            <a th:href="@{/nannysbio}" th:text="${nanny.name}"></a>
+            </td>
+            <td th:text="${nanny.surname}"></td>
+            <td th:text="${nanny.qualification}"></td>
+            <td>
+            <a th:href="@{/bookings/add}">
+                <button>Book</button>
+            </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div th:if="${#lists.isEmpty(nannies)}">
+    <p>No nannies found.</p>
+</div>
+
+<div th:if="${errors}">
+    <h2>Errors:</h2>
+    <ul>
+        <li th:each="error : ${errors}" th:text="${error}"></li>
+    </ul>
+</div>
+
+<script>
+    function clearInput() {
+        document.getElementById("city").value = "";
+    }
+</script>
+<a href="/welcome">Back to menu</a>
+</body>
+</html>

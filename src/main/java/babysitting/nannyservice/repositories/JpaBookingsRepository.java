@@ -1,9 +1,10 @@
 package babysitting.nannyservice.repositories;
 
-import babysitting.nannyservice.domain.Nanny;
+
+import babysitting.nannyservice.domain.Bookings;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface NannyRepository extends JpaRepository<Nanny, Long> {
+public interface JpaBookingsRepository extends JpaRepository<Bookings, Long> {
 }

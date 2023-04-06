@@ -1,7 +1,7 @@
 package babysitting.nannyservice.controllers;
 
 import babysitting.nannyservice.domain.Nanny;
-import babysitting.nannyservice.services.ShowAllNanniesService;
+import babysitting.nannyservice.services.ListAllNanniesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,21 +9,23 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 
-@Controller
-public class ShowAllNanniesController {
 
-    private final ShowAllNanniesService showAllNanniesService;
+@Controller
+public class ListAllNanniesController {
+
+    private final ListAllNanniesService listAllNanniesService;
 
     @Autowired
-    public ShowAllNanniesController(ShowAllNanniesService showAllNanniesService) {
-        this.showAllNanniesService = showAllNanniesService;
+    public ListAllNanniesController(ListAllNanniesService listAllNanniesService) {
+        this.listAllNanniesService = listAllNanniesService;
     }
 
     @GetMapping("/showAllNannies")
-    public String getsShowALlNannies(Model model) {
-        List<Nanny> nannies = showAllNanniesService.getNannies();
+    public String getListAllNannies(Model model) {
+        List<Nanny> nannies = listAllNanniesService.getNannies();
         model.addAttribute("nannies", nannies);
         return "nanniesList";
     }
+
 
 }
