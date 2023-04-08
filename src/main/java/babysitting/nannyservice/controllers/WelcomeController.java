@@ -13,12 +13,16 @@ import java.util.List;
 public class WelcomeController {
 
     @GetMapping("/welcome")
-    public String home() {
+    public String welcome() {
         return "welcome";
     }
     @GetMapping("/api/v1/auth/register")
-    public String login() {
-        return "welcome";
+    public String register() {
+        return "register";
+    }
+    @GetMapping("/api/v1/auth/authenticate")
+    public String loginPage() {
+        return "login";
     }
 
 }
