@@ -28,6 +28,46 @@
     </tbody>
 </table>
 <br>
-<a href="/welcome">Back to menu</a>
+<a id="backToMenuLink" href="/welcome">Back to menu</a>
+
+<script>
+  async function callWelcomePage() {
+    try {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        alert('Token not found');
+        return;
+      }
+
+      const response = await fetch('http://localhost:8080/welcome', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + token
+        },
+      });
+
+      if (response.ok) {
+        const result = await response.text();
+        console.log(result);
+        document.open();
+        document.write(result);
+        document.close();
+      } else {
+        const error = await response.json();
+        console.error('Error details:', error);
+        alert('Failed to access the welcome page: ' + JSON.stringify(error));
+      }
+    } catch (error) {
+      console.error('Error details:', error);
+      alert('Error occurred while accessing the welcome page: ' + JSON.stringify(error));
+    }
+  }
+
+  document.getElementById('backToMenuLink').addEventListener('click', async function(event) {
+    event.preventDefault();
+    callWelcomePage();
+  });
+</script>
 </body>
 </html>

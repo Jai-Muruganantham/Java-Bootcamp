@@ -6,6 +6,45 @@
 <body>
 <h1 th:text="'Welcome to NannyService menu!'">Welcome to NannyService menu!</h1>
 <h3>Program menu:</h3>
-<a th:href="@{/showAllNannies}">View nannies table</a> <br>
+<a id="viewNanniesLink" href="#">View nannies table</a> <br>
+
+<script>
+  // Attach an event listener to the view nannies link
+  document.getElementById('viewNanniesLink').addEventListener('click', async function(event) {
+    event.preventDefault();
+
+    const token = localStorage.getItem('token');
+    if (!token) {
+      alert('Token not found');
+      return;
+    }
+
+    try {
+      const response = await fetch('http://localhost:8080/showAllNannies', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + token
+        }
+      });
+
+      if (response.ok) {
+        const result = await response.text();
+        console.log(result);
+        document.open();
+        document.write(result);
+        document.close();
+      } else {
+        const error = await response.json();
+        console.error('Error details:', error);
+        alert('Failed to access the show all nannies page: ' + JSON.stringify(error));
+      }
+    } catch (error) {
+      console.error('Error details:', error);
+      alert('Error occurred while accessing the show all nannies page: ' + JSON.stringify(error));
+    }
+  });
+
+</script>
 </body>
 </html>

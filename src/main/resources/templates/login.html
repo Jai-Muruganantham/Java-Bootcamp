@@ -26,6 +26,8 @@
         return;
       }
 
+      const viewNanniesLink = document.getElementById('viewNanniesLink');
+
       const response = await fetch('http://localhost:8080/welcome', {
         method: 'GET',
         headers: {
@@ -89,6 +91,7 @@
       alert('Error occurred during login');
     }
   });
+
 </script>
 </body>
 </html>
