@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Babysitting Site</title>
+    <span class="mobile-menu" onclick="toggleMenu()" style="display: none; float: right; font-size: 30px;">&#9776;</span>
+
+    <style>
+@keyframes rainbow {
+    0% {
+        color: #007bff;
+    }
+    25% {
+        color: #28a745;
+    }
+    50% {
+        color: #ffc107;
+    }
+    75% {
+        color: #dc3545;
+    }
+    100% {
+        color: #007bff;
+    }
+}
+</style>
+
+<style>
+nav ul li a:hover {
+    text-decoration: underline;
+}
+</style>
+
+
+    <style>
+    .cta-buttons {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .cta-buttons a {
+        margin-bottom: 10px;
+    }
+
+    /* Responsive CSS styles */
+    @media (max-width: 768px) {
+        /* Other responsive styles */
+
+        .cta-buttons a {
+            width: 100%;
+            text-align: center;
+        }
+    }
+
+    /* Responsive CSS styles */
+    @media (max-width: 1024px) {
+        .hero {
+            height: 400px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        nav ul li {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        nav {
+            display: none;
+        }
+
+        .mobile-menu {
+            display: block;
+            cursor: pointer;
+        }
+
+        .show {
+            display: block !important;
+        }
+
+        .how-it-works div,
+        .testimonials div,
+        .blog div,
+        .footer div {
+            flex: auto;
+            width: 100%;
+        }
+    }
+</style>
+
+
+</head>
+
+<body style="font-family: Arial, sans-serif; margin: 0; padding: 0; box-sizing: border-box;">
+
+<!-- Header -->
+<header style="background-color: #f8f9fa; padding: 20px;">
+    <div class="logo" style="display: inline-block;">
+        <img src="your-logo.png" alt="Logo" style="max-height: 50px;">
+    </div>
+    <nav style="display: inline-block; float: right;">
+        <ul style="list-style-type: none; margin: 0; padding: 0; overflow: hidden;">
+            <li style="display: inline; margin-right: 20px;"><a href="/find_a_nanny.html" style="text-decoration: none; color: #333;">Find a Nanny</a></li>
+            <li style="display: inline; margin-right: 20px;"><a href="/post_a_job.html" style="text-decoration: none; color: #333;">Post a Job</a></li>
+            <li style="display: inline; margin-right: 20px;"><a href="/about_us" style="text-decoration: none; color: #333;">About Us</a></li>
+            <li style="display: inline; margin-right: 20px;"><a href="/testimonials" style="text-decoration: none; color: #333;">Testimonials</a></li>
+            <li style="display: inline; margin-right: 20px;"><a href="/blog" style="text-decoration: none; color: #333;">Blog</a></li>
+            <li style="display: inline; margin-right: 20px;"><a href="/contact_us" style="text-decoration: none; color: #333;">Contact Us</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- Hero Section -->
+<section class="hero" style="background-image: url('hero-background.jpg'); background-size: cover; background-position: center; height: 600px; position: relative; text-align: center; color: white;">
+    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+        <h1 style="font-size: 3em; margin-bottom: 20px; color: #007bff; animation: rainbow 5s infinite;">Find the Perfect Nanny for Your Family</h1>
+        <p style="font-size: 1.2em; margin-bottom: 30px;color: #007bff; animation: rainbow 5s infinite;">Your one-stop solution for professional and reliable childcare services</p>
+        <div class="cta-buttons">
+            <a href="find-a-nanny.html" style="background-color: #007bff; padding: 10px 20px; text-decoration: none; color: white; margin-right: 10px;">Find a Nanny</a>
+            <a href="apply-as-a-nanny.html" style="background-color: #28a745; padding: 10px 20px; text-decoration: none; color: white;">Apply as a Nanny</a>
+        </div>
+    </div>
+</section>
+
+<!-- How It Works Section -->
+<section class="how-it-works" style="background-color: #f8f9fa; padding: 60px 0; text-align: center;">
+    <h2 style="font-size: 2.5em; margin-bottom: 40px;">How Our Platform Works</h2>
+    <div style="display: flex; justify-content: space-around;">
+        <!-- Add appropriate icons or images for each step -->
+        <div class="step" style="flex: 1; padding: 0 20px;">
+            <img src="step1-icon.png" alt="Step 1 Icon" style="max-height: 100px;">
+            <h3 style="font-size: 1.8em; margin: 20px 0;">Create a Profile</h3>
+            <p>Parents and nannies sign up and create detailed profiles.</p>
+        </div>
+        <div class="step" style="flex: 1; padding: 0 20px;">
+            <img src="step2-icon.png" alt="Step 2 Icon" style="max-height: 100px;">
+            <h3 style="font-size: 1.8em; margin: 20px 0;">Search and Connect</h3>
+            <p>Parents search for nannies based on their requirements, and nannies browse job postings.</p>
+        </div>
+        <div class="step" style="flex: 1; padding: 0 20px;">
+            <img src="step3-icon.png" alt="Step 3 Icon" style="max-height: 100px;">
+            <h3 style="font-size: 1.8em; margin: 20px 0;">Interview and Hire</h3>
+            <p>Both parties communicate, conduct interviews, and finalize employment details.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Nannies Section -->
+<section class="featured-nannies" style="padding: 60px 0; text-align: center;">
+    <h2 style="font-size: 2.5em; margin-bottom: 40px;">Meet Our Top Nannies</h2>
+    <!-- Add profiles of featured nannies -->
+</section>
+
+<!-- Testimonials Section -->
+<section class="testimonials" style="background-color: #f8f9fa; padding: 60px 0; text-align: center;">
+    <h2 style="font-size: 2.5em; margin-bottom: 40px;">Happy Families and Nannies</h2>
+    <!-- Add a carousel with testimonials -->
+</section>
+
+<!-- Blog Section -->
+<section class="blog" style="padding: 60px 0; text-align: center;">
+    <h2 style="font-size: 2.5em; margin-bottom: 40px;">From Our Blog</h2>
+    <!-- Add recent blog posts -->
+</section>
+
+<!-- Footer -->
+
+<!-- Footer -->
+<footer style="background-color: #343a40; color: white; padding: 40px 0;">
+    <div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+        <nav>
+            <ul style="list-style-type: none; margin: 0; padding: 0;">
+                <li style="margin-bottom: 10px;"><a href="find_a_nanny" style="text-decoration: none; color: white;">Find a Nanny</a></li>
+                <li style="margin-bottom: 10px;"><a href="post_a_job" style="text-decoration: none; color: white;">Post a Job</a></li>
+                <li style="margin-bottom: 10px;"><a href="/about_us" style="text-decoration: none; color: white;">About Us</a></li>
+                <li style="margin-bottom: 10px;"><a href="/testimonials" style="text-decoration: none; color: white;">Testimonials</a></li>
+                <li style="margin-bottom: 10px;"><a href="/blog" style="text-decoration: none; color: white;">Blog</a></li>
+                <li style="margin-bottom: 10px;"><a href="contact_us" style="text-decoration: none; color: white;">Contact Us</a></li>
+            </ul>
+        </nav>
+        <div class="social-media">
+            <!-- Add your social media links here -->
+            <a href="your-facebook-link" style="margin-right: 10px;"><img src="facebook-icon.png" alt="Facebook" style="max-height: 30px;"></a>
+            <a href="your-twitter-link" style="margin-right: 10px;"><img src="twitter-icon.png" alt="Twitter" style="max-height: 30px;"></a>
+            <a href="your-instagram-link" style="margin-right: 10px;"><img src="instagram-icon.png" alt="Instagram" style="max-height: 30px;"></a>
+            <a href="your-linkedin-link"><img src="linkedin-icon.png" alt="LinkedIn" style="max-height: 30px;"></a>
+        </div>
+        <div class="contact-info">
+            <p>Email: info@yoursite.com</p>
+            <p>Phone: (123) 456-7890</p>
+
+            <p>Address: 123 Your Street, City, State, ZIP</p>
+        </div>
+        <div class="newsletter">
+            <h3 style="margin-bottom: 10px;">Subscribe to Our Newsletter</h3>
+            <form>
+                <input type="email" name="email" placeholder="Enter your email" style="padding: 5px; width: 70%;">
+                <button type="submit" style="padding: 5px 10px; background-color: #007bff; color: white; border: none; cursor: pointer;">Subscribe</button>
+            </form>
+        </div>
+    </div>
+</footer>
+<script>
+    function toggleMenu() {
+        var nav = document.querySelector('nav');
+        nav.classList.toggle('show');
+    }
+</script></body>
+
+</html>

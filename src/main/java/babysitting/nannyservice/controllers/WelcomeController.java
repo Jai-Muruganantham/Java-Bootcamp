@@ -24,5 +24,29 @@ public class WelcomeController {
     public String loginPage() {
         return "login";
     }
+    @GetMapping("/home")
+    public String home() {
+        return "home";
+    }
+    @GetMapping("/about_us")
+    public String about_us() {
+        return "about_us";
+    }
+
+    @GetMapping("/testimonials")
+    public String testimonials() {
+        return "testimonials";
+    }
+
+
+    @GetMapping("/blog")
+    public String blog() {
+        return "blog";
+    }
+
+    @GetMapping("/contact_us")
+    public String contact_us() {
+        return "contact_us";
+    }
 
 }
