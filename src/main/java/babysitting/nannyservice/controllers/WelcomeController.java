@@ -7,8 +7,44 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class WelcomeController {
 
     @GetMapping("/welcome")
-    public String home() {
+    public String welcome() {
         return "welcome";
+    }
+    @GetMapping("/api/v1/auth/register")
+    public String register() {
+        return "register";
+    }
+    @GetMapping("/api/v1/auth/authenticate")
+    public String loginPage() {
+        return "login";
+    }
+    @GetMapping("/home")
+    public String home() {
+        return "home";
+    }
+    @GetMapping("/about_us")
+    public String about_us() {
+        return "about_us";
+    }
+
+    @GetMapping("/testimonials")
+    public String testimonials() {
+        return "testimonials";
+    }
+
+
+    @GetMapping("/blog")
+    public String blog() {
+        return "blog";
+    }
+
+    @GetMapping("/contact_us")
+    public String contact_us() {
+        return "contact_us";
+    }
+    @GetMapping("/apply_as_nanny")
+    public String apply_as_nanny() {
+        return "apply_as_nanny";
     }
 
 }

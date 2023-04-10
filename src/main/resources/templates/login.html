@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #2193b0, #6dd5ed);
+            color: #fff;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+        }
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+        label {
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        input[type=email], input[type=password] {
+            width: 100%;
+            padding: 10px;
+            border-radius: 3px;
+            border: none;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+        button[type=submit] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button[type=submit]:hover {
+            background-color: #3e8e41;
+        }
+        p {
+            text-align: center;
+        }
+        a {
+            color: #fff;
+            text-decoration: none;
+            border-bottom: 1px solid #fff;
+            transition: border-bottom 0.2s;
+        }
+        a:hover {
+            border-bottom: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+<h1>Login</h1>
+<form id="loginForm">
+    <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+    <br>
+    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+    <br>
+    <button type="submit">Login</button>
+</form>
+<p>Don't have an account? <a href="/api/v1/auth/register">Register here</a></p>
+
+<script>
+  async function callWelcomePage() {
+    try {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        alert('Token not found');
+        return;
+      }
+
+     //const viewNanniesLink = document.getElementById('viewNanniesLink');
+
+      const response = await fetch('http://localhost:8080/welcome', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + token
+        },
+      });
+
+      if (response.ok) {
+        const result = await response.text();
+        console.log(result);
+        document.open();
+        document.write(result);
+        document.close();
+      } else {
+        const error = await response.json();
+        console.error('Error details:', error);
+        alert('Failed to access the welcome page: ' + JSON.stringify(error));
+      }
+    } catch (error) {
+      console.error('Error details:', error);
+      alert('Error occurred while accessing the welcome page: ' + JSON.stringify(error));
+    }
+  }
+
+  document.getElementById('loginForm').addEventListener('submit', async function(event) {
+    event.preventDefault();
+
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    const loginData = {
+      email,
+      password
+    };
+
+    try {
+      const response = await fetch('http://localhost:8080/api/v1/auth/authenticate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(loginData)
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        console.log(result);
+        alert('Login successful');
+        // Save the token and handle the authenticated state in your application
+        localStorage.setItem('token', result.token);
+        // Call the protected endpoint with the received token
+        callWelcomePage();
+      } else {
+        const error = await response.json();
+        console.error(error);
+        alert('Login failed');
+      }
+    } catch (error) {
+      console.error(error);
+      alert('Error occurred during login');
+    }
+  });
+
+</script>
+</body>
+</html>
