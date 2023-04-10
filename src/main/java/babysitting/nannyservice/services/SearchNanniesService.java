@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -25,13 +26,13 @@ public class SearchNanniesService {
     public SearchNannyResponse execute(SearchNanniesRequest request) {
         List<CoreError> errors = validator.validate(request);
         if (!errors.isEmpty()) {
-            return new SearchNannyResponse(null, errors);
+            return new SearchNannyResponse(errors);
         }
         List<Nanny> nannies = search(request);
-        return new SearchNannyResponse(nannies, null);
+        return new SearchNannyResponse(nannies, true);
     }
 
-    private List<Nanny> search(SearchNanniesRequest request) { // is it possible to pass id as parameter or only request instance??
+    private List<Nanny> search(SearchNanniesRequest request) {
         List<Nanny> nannies = new ArrayList<>();
         if (request.isCityProvided() && !request.isNameProvided()) {
             nannies = repository.findByCity(request.getCity());
@@ -41,6 +42,10 @@ public class SearchNanniesService {
         }
         if (request.isCityProvided() && request.isNameProvided()) {
             nannies = repository.findByNameAndCity(request.getName(), request.getCity());
+        }
+        if (request.isIdProvided()) {
+            Optional<Nanny> nannyOptional = repository.findById(request.getId());
+            nannyOptional.ifPresent(nannies::add);
         }
         return nannies;
     }

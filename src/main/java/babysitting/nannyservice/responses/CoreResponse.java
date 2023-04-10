@@ -5,6 +5,7 @@ import java.util.List;
 abstract class CoreResponse {
 
     private List<CoreError> errors;
+    private boolean success;
 
     public CoreResponse() { }
 
@@ -18,5 +19,12 @@ abstract class CoreResponse {
 
     public boolean hasErrors() {
         return errors != null && !errors.isEmpty();
+    }
+
+    public CoreResponse(boolean success) {
+        this.success = success;
+    }
+    public boolean isSuccess() {
+        return success;
     }
 }

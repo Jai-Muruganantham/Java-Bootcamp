@@ -20,15 +20,6 @@ public class SearchNanniesController {
         this.service = service;
     }
 
-    /* @GetMapping("/listNanniesByCity")
-    public String showNanniesByCity(@RequestParam("city") String city, Model model) {
-        List<Nanny> nannies = listAllNanniesService.getNanniesByCity(city);
-        model.addAttribute("nannies", nannies);
-        return "nannies";
-    }*/
-
-
-
     @GetMapping(value = "/searchNannies")
     public String showListNanniesByCityPage(ModelMap modelMap) {
         modelMap.addAttribute("request", new SearchNanniesRequest());
@@ -46,6 +37,15 @@ public class SearchNanniesController {
         }
         return "searchnannies";
     }
+
+     /* @GetMapping("/listNanniesByCity")
+    public String showNanniesByCity(@RequestParam("city") String city, Model model) {
+        List<Nanny> nannies = listAllNanniesService.getNanniesByCity(city);
+        model.addAttribute("nannies", nannies);
+        return "nannies";
+    }*/
+
+
 
    /* @GetMapping("/showListNanniesByCity")
     public String showListNanniesByCity(Model model) {

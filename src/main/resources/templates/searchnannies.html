@@ -38,6 +38,9 @@
 
 <div th:if="${nannies != null}">
     <h2>Found Nannies:</h2>
+    <div th:if="${message}" class="alert alert-success" role="alert">
+        <p th:text="${message}"></p>
+    </div>
     <table>
         <thead>
         <tr>
@@ -50,14 +53,14 @@
         <tbody>
         <tr th:each="nanny : ${nannies}">
             <td>
-            <a th:href="@{/nannysbio}" th:text="${nanny.name}"></a>
+                <a th:href="@{/nannysbio}" th:text="${nanny.name}"></a>
             </td>
             <td th:text="${nanny.surname}"></td>
             <td th:text="${nanny.qualification}"></td>
             <td>
-            <a th:href="@{/bookings/add}">
+                <a th:href="@{/createBooking(nannyid=${nanny.id})}">
                 <button>Book</button>
-            </a>
+                </a>
             </td>
         </tr>
         </tbody>
@@ -71,7 +74,9 @@
 <div th:if="${errors}">
     <h2>Errors:</h2>
     <ul>
-        <li th:each="error : ${errors}" th:text="${error}"></li>
+        <li th:each="error : ${errors}">
+            <span th:text="${error.field}" /> <span th:text="${error.message}" />
+        </li>
     </ul>
 </div>
 

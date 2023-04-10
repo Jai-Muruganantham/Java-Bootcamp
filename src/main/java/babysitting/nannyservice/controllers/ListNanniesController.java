@@ -1,7 +1,7 @@
 package babysitting.nannyservice.controllers;
 
 import babysitting.nannyservice.domain.Nanny;
-import babysitting.nannyservice.services.ListAllNanniesService;
+import babysitting.nannyservice.services.ListNanniesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,12 +11,12 @@ import java.util.List;
 
 
 @Controller
-public class ListAllNanniesController {
+public class ListNanniesController {
 
-    private final ListAllNanniesService listAllNanniesService;
+    private final ListNanniesService listAllNanniesService;
 
     @Autowired
-    public ListAllNanniesController(ListAllNanniesService listAllNanniesService) {
+    public ListNanniesController(ListNanniesService listAllNanniesService) {
         this.listAllNanniesService = listAllNanniesService;
     }
 

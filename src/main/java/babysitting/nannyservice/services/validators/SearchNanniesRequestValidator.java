@@ -6,23 +6,33 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class SearchNanniesRequestValidator {
 
+
+
     public List<CoreError> validate(SearchNanniesRequest request) {
         List<CoreError> errors = new ArrayList<>();
-        errors.addAll(validateSearchFields(request));
+        validateCity(request).ifPresent(errors::add);
         return errors;
     }
 
-  /*  private List<CoreError> validateSearchFields(SearchNanniesRequest request) {
+
+    private Optional<CoreError> validateCity(SearchNanniesRequest request) {
+        return (request.getCity() == null || request.getCity().isEmpty())
+                ? Optional.of(new CoreError("City", "must not be empty!"))
+                : Optional.empty();
+    }
+
+       /* public List<CoreError> validate(SearchNanniesRequest request) {
         List<CoreError> errors = new ArrayList<>();
-        if (isEmpty(request.getCity()) && isEmpty(request.getName())) {
-            errors.add(new CoreError("One of the fields", "must not be empty!"));
-        }
+        errors.addAll(validateSearchFields(request));
         return errors;
     }*/
+
+/*
 
     private List<CoreError> validateSearchFields(SearchNanniesRequest request) {
         List<CoreError> errors = new ArrayList<>();
@@ -34,5 +44,5 @@ public class SearchNanniesRequestValidator {
 
     private boolean isEmpty(String str) {
         return str == null || str.isEmpty();
-    }
+    }*/
 }

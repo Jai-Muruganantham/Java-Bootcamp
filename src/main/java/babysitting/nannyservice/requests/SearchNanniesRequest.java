@@ -65,10 +65,8 @@ public class SearchNanniesRequest {
         return this.city != null && !this.city.isEmpty();
     }
 
-
-
-  /*  public boolean isIdProvided() {
+    public boolean isIdProvided() {
         return this.id != null && this.id > 0;
-    }*/
+    }
 
 }

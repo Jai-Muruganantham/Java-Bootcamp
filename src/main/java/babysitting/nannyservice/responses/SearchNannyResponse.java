@@ -8,8 +8,13 @@ public class SearchNannyResponse extends CoreResponse {
 
     private List<Nanny> nannies;
 
-    public SearchNannyResponse (List<Nanny> nannies, List<CoreError> errors){
+
+    public SearchNannyResponse(List<CoreError> errors) {
         super(errors);
+    }
+
+    public SearchNannyResponse(List<Nanny> nannies, boolean success ) {
+        super(success);
         this.nannies = nannies;
     }
 

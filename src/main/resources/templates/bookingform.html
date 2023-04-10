@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Booking Form</title>
+</head>
+<body>
+<h1>Booking Form</h1>
+<form th:action="@{/createBooking}" th:object="${request}" method="post">
+  <input type="hidden" th:field="*{timestamp}" th:value="${#temporals.format(#temporals.createNow(), 'yyyy-MM-dd HH:mm:ss')}" />
+  <input type="hidden" th:field="*{nannyid}" th:value="${nannyid}" />
+  <label>Message:</label>
+  <input type="text" th:field="*{message}" />
+  <br/>
+  <label>Start Time:</label>
+  <input type="datetime-local" th:field="*{starttime}" />
+  <br/>
+  <label>End Time:</label>
+  <input type="datetime-local" th:field="*{endtime}" />
+  <br/>
+  <button type="submit">Book</button>
+</form>
+
+<script>
+  if (window.location.href.endsWith('/searchNannies')) {
+    alert("Booking request is sent. Please wait for confirmation.");
+  }
+</script>
+
+<div th:if="${errors}">
+  <h2>Errors:</h2>
+  <ul>
+    <li th:each="error : ${errors}" th:text="${error}"></li>
+  </ul>
+</div>
+</body>
+</html>

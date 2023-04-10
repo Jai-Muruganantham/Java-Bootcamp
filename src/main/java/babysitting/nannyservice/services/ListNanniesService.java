@@ -6,14 +6,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
-public class ListAllNanniesService {
+public class ListNanniesService {
 
     private final JpaNannyRepository nannyRepository;
 
     @Autowired
-    public ListAllNanniesService(JpaNannyRepository nannyRepository){
+    public ListNanniesService(JpaNannyRepository nannyRepository){
         this.nannyRepository = nannyRepository;
     }
 
@@ -24,6 +25,7 @@ public class ListAllNanniesService {
     public List<Nanny> getNanniesByCity(String city){
         return nannyRepository.findByCity(city);
     }
+
 
 
 }
