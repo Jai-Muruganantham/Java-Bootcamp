@@ -4,8 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Babysitting Site</title>
+    <title>Apply as a Nanny - Your Babysitting Site</title>
     <span class="mobile-menu" onclick="toggleMenu()" style="display: none; float: right; font-size: 30px;">&#9776;</span>
+
+
     <style>
 @keyframes rainbow {
     0% {
@@ -24,7 +26,6 @@
         color: #007bff;
     }
 }
-
 
 nav ul li a:hover {
     text-decoration: underline;
@@ -86,7 +87,6 @@ nav ul li a:hover {
     }
 </style>
 
-
 </head>
 
 <body style="font-family: Arial, sans-serif; margin: 0; padding: 0; box-sizing: border-box;">
@@ -99,7 +99,7 @@ nav ul li a:hover {
     <nav style="display: inline-block; float: right;">
         <ul style="list-style-type: none; margin: 0; padding: 0; overflow: hidden;">
             <li style="display: inline; margin-right: 20px;"><a href="/find_a_nanny.html" style="text-decoration: none; color: #333;">Find a Nanny</a></li>
-            <li style="display: inline; margin-right: 20px;"><a href="/apply_as_nanny" style="text-decoration: none; color: #333;">Post a Job</a></li>
+            <li style="display: inline; margin-right: 20px;"><a href="/post_a_job.html" style="text-decoration: none; color: #333;">Post a Job</a></li>
             <li style="display: inline; margin-right: 20px;"><a href="/about_us" style="text-decoration: none; color: #333;">About Us</a></li>
             <li style="display: inline; margin-right: 20px;"><a href="/testimonials" style="text-decoration: none; color: #333;">Testimonials</a></li>
             <li style="display: inline; margin-right: 20px;"><a href="/blog" style="text-decoration: none; color: #333;">Blog</a></li>
@@ -108,60 +108,37 @@ nav ul li a:hover {
     </nav>
 </header>
 
-<!-- Hero Section -->
-<section class="hero" style="background-image: url('hero-background.jpg'); background-size: cover; background-position: center; height: 600px; position: relative; text-align: center; color: white;">
-    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-        <h1 style="font-size: 3em; margin-bottom: 20px; color: #007bff; animation: rainbow 5s infinite;">Find the Perfect Nanny for Your Family</h1>
-        <p style="font-size: 1.2em; margin-bottom: 30px;color: #007bff; animation: rainbow 5s infinite;">Your one-stop solution for professional and reliable childcare services</p>
-        <div class="cta-buttons">
-            <a href="find-a-nanny.html" style="background-color: #007bff; padding: 10px 20px; text-decoration: none; color: white; margin-right: 10px;">Find a Nanny</a>
-            <a href="apply-as-a-nanny.html" style="background-color: #28a745; padding: 10px 20px; text-decoration: none; color: white;">Apply as a Nanny</a>
-        </div>
+
+<!-- Apply as a Nanny Section -->
+<section class="apply-as-nanny" style="padding: 60px 0; text-align: center;">
+    <h1 style="font-size: 3em; margin-bottom: 20px;">Apply as a Nanny</h1>
+    <p style="font-size: 1.2em; margin-bottom: 30px;">Join our platform and connect with families in need of professional childcare services.</p>
+
+    <!-- Application Form -->
+    <div style="width: 80%; margin: 0 auto;">
+        <form>
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" required><br><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br><br>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required><br><br>
+
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="location" required><br><br>
+
+            <label for="experience">Years of Experience:</label>
+            <input type="number" id="experience" name="experience" min="0" required><br><br>
+
+            <label for="bio">Tell us about yourself:</label><br>
+            <textarea id="bio" name="bio" rows="4" cols="50" required></textarea><br><br>
+
+            <button type="submit" style="padding: 10px 20px; background-color: #007bff; color: white; border: none; cursor: pointer;">Submit Application</button>
+        </form>
     </div>
 </section>
-
-<!-- How It Works Section -->
-<section class="how-it-works" style="background-color: #f8f9fa; padding: 60px 0; text-align: center;">
-    <h2 style="font-size: 2.5em; margin-bottom: 40px;">How Our Platform Works</h2>
-    <div style="display: flex; justify-content: space-around;">
-        <!-- Add appropriate icons or images for each step -->
-        <div class="step" style="flex: 1; padding: 0 20px;">
-            <img src="step1-icon.png" alt="Step 1 Icon" style="max-height: 100px;">
-            <h3 style="font-size: 1.8em; margin: 20px 0;">Create a Profile</h3>
-            <p>Parents and nannies sign up and create detailed profiles.</p>
-        </div>
-        <div class="step" style="flex: 1; padding: 0 20px;">
-            <img src="step2-icon.png" alt="Step 2 Icon" style="max-height: 100px;">
-            <h3 style="font-size: 1.8em; margin: 20px 0;">Search and Connect</h3>
-            <p>Parents search for nannies based on their requirements, and nannies browse job postings.</p>
-        </div>
-        <div class="step" style="flex: 1; padding: 0 20px;">
-            <img src="step3-icon.png" alt="Step 3 Icon" style="max-height: 100px;">
-            <h3 style="font-size: 1.8em; margin: 20px 0;">Interview and Hire</h3>
-            <p>Both parties communicate, conduct interviews, and finalize employment details.</p>
-        </div>
-    </div>
-</section>
-
-<!-- Featured Nannies Section -->
-<section class="featured-nannies" style="padding: 60px 0; text-align: center;">
-    <h2 style="font-size: 2.5em; margin-bottom: 40px;">Meet Our Top Nannies</h2>
-    <!-- Add profiles of featured nannies -->
-</section>
-
-<!-- Testimonials Section -->
-<section class="testimonials" style="background-color: #f8f9fa; padding: 60px 0; text-align: center;">
-    <h2 style="font-size: 2.5em; margin-bottom: 40px;">Happy Families and Nannies</h2>
-    <!-- Add a carousel with testimonials -->
-</section>
-
-<!-- Blog Section -->
-<section class="blog" style="padding: 60px 0; text-align: center;">
-    <h2 style="font-size: 2.5em; margin-bottom: 40px;">From Our Blog</h2>
-    <!-- Add recent blog posts -->
-</section>
-
-<!-- Footer -->
 
 <!-- Footer -->
 <footer style="background-color: #343a40; color: white; padding: 40px 0;">
@@ -199,10 +176,11 @@ nav ul li a:hover {
     </div>
 </footer>
 <script>
-    function toggleMenu() {
-        var nav = document.querySelector('nav');
-        nav.classList.toggle('show');
-    }
-</script></body>
+        function toggleMenu() {
+            var nav = document.querySelector('nav');
+            nav.classList.toggle('show');
+        }
+ </script>
+</body>
 
 </html>

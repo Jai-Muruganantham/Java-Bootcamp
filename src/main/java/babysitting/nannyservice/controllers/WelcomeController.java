@@ -48,5 +48,9 @@ public class WelcomeController {
     public String contact_us() {
         return "contact_us";
     }
+    @GetMapping("/apply_as_nanny")
+    public String apply_as_nanny() {
+        return "apply_as_nanny";
+    }
 
 }
