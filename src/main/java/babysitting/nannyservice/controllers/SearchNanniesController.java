@@ -35,7 +35,7 @@ public class SearchNanniesController {
         } else {
             modelMap.addAttribute("nannies", response.getNannies()); //"nannies" is the reference in html template
         }
-        return "searchnannies";
+        return "find_a_nanny_v2";
     }
 
      /* @GetMapping("/listNanniesByCity")

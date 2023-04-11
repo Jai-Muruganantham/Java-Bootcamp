@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find a Nanny</title>
+    <link rel="stylesheet" href="your-stylesheet.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <style>
+@keyframes rainbow {
+    0% {
+        color: #007bff;
+    }
+    25% {
+        color: #28a745;
+    }
+    50% {
+        color: #ffc107;
+    }
+    75% {
+        color: #dc3545;
+    }
+    100% {
+        color: #007bff;
+    }
+}
+
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+    .cta-buttons {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .cta-buttons a {
+        margin-bottom: 10px;
+    }
+
+    /* Responsive CSS styles */
+    @media (max-width: 768px) {
+        /* Other responsive styles */
+
+        .cta-buttons a {
+            width: 100%;
+            text-align: center;
+        }
+    }
+
+    /* Responsive CSS styles */
+    @media (max-width: 1024px) {
+        .hero {
+            height: 400px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        nav ul li {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        nav {
+            display: none;
+        }
+
+        .mobile-menu {
+            display: block;
+            cursor: pointer;
+        }
+
+        .show {
+            display: block !important;
+        }
+
+        .how-it-works div,
+        .testimonials div,
+        .blog div,
+        .footer div {
+            flex: auto;
+            width: 100%;
+        }
+    }
+
+
+        /* Table styles */
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 5px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+    <style>
+    .nanny-card {
+        box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.1);
+        background-color: white;
+        width: 300px;
+        padding: 20px;
+        margin: 10px;
+        border-radius: 5px;
+        position: relative;
+        transition: transform 0.3s;
+    }
+
+    .nanny-card:hover {
+        transform: translateY(-10px);
+    }
+
+    .nanny-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 5px;
+        margin-bottom: 20px;
+    }
+
+    .nanny-card h3 {
+        font-size: 1.5em;
+        margin-top: 0;
+        margin-bottom: 10px;
+    }
+
+    .nanny-card button {
+        padding: 5px 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+</style>
+</head>
+
+<body style="font-family: Arial, sans-serif; margin: 0; padding: 0; box-sizing: border-box;">
+<!-- Header -->
+<header style="background-color: #f8f9fa; padding: 20px;">
+    <div class="logo" style="display: inline-block;">
+        <img src="logo.png" alt="Logo" style="max-height: 50px;">
+    </div>
+    <nav style="display: inline-block; float: right;">
+        <ul style="list-style-type: none; margin: 0; padding: 0; overflow: hidden;">
+            <li style="display: inline; margin-right: 20px;"><a href="/home" style="text-decoration: none; color: #333;">Home</a></li>
+            <li style="display: inline; margin-right: 20px;"><a href="/find_a_nanny.html" style="text-decoration: none; color: #333;">Find a Nanny</a></li>
+            <li style="display: inline; margin-right: 20px;"><a href="/apply_as_nanny" style="text-decoration: none; color: #333;">Post a Job</a></li>
+            <li style="display: inline; margin-right: 20px;"><a href="/about_us" style="text-decoration: none; color: #333;">About Us</a></li>
+            <li style="display: inline; margin-right: 20px;"><a href="/testimonials" style="text-decoration: none; color: #333;">Testimonials</a></li>
+            <li style="display: inline; margin-right: 20px;"><a href="/blog" style="text-decoration: none; color: #333;">Blog</a></li>
+            <li style="display: inline; margin-right: 20px;"><a href="/contact_us" style="text-decoration: none; color: #333;">Contact Us</a></li>
+            <li style="display: inline; margin-right: 20px;"><a href="/api/v1/auth/authenticate" style="text-decoration: none; color: #333;">Sing up/in</a></li>
+
+        </ul>
+    </nav>
+</header>
+
+<!-- Find a Nanny Section -->
+<section class="find-a-nanny" style="padding: 60px 0; text-align: center;">
+    <h2 style="font-size: 2.5em; margin-bottom: 40px;">Find a Nanny by City</h2>
+    <form action="/searchNannies" method="post">
+        <label for="city">City:</label>
+        <input type="text" id="city" name="city" placeholder="Enter city name" style="padding: 5px; width: 70%;">
+        <button type="submit" style="padding: 5px 10px; background-color: #007bff; color: white; border: none; cursor: pointer;">Search</button>
+        <button type="button" onclick="clearInput()" style="padding: 5px 10px; background-color: #007bff; color: white; border: none; cursor: pointer;">Clear</button>
+    </form>
+</section>
+<!-- Search Results Section -->
+<section class="search-results" style="padding: 60px 0; text-align: center;">
+    <h2 style="font-size: 2.5em; margin-bottom: 40px;">Search Results</h2>
+    <!-- Display search results in cards -->
+    <div th:if="${nannies != null}" style="display: flex; flex-wrap: wrap; justify-content: center;">
+        <div th:each="nanny : ${nannies}" class="nanny-card">
+            <img src="nanny-image-placeholder.jpg" alt="Nanny Image" th:alt="${nanny.user.firstname + ' ' + nanny.user.lastname}">
+            <h3 th:text="${nanny.user.firstname + ' ' + nanny.user.lastname}"></h3>
+            <p th:text="'Qualification: ' + ${nanny.qualification}"></p>
+            <p class="bio-short" th:text="'Bio: ' + ${nanny.bio.substring(0, 100)}" style="white-space: pre-wrap; display: block;"></p>
+            <p class="bio-full" th:text="'Bio: ' + ${nanny.bio}" style="white-space: pre-wrap; display: none;"></p>
+            <a href="#" class="read-more" style="text-decoration: none;">Read More</a>
+            <!-- Add more information about the nanny if needed -->
+            <div style="text-align: right;">
+                <a th:href="@{/createBooking(nannyid=${nanny.id})}">
+                    <button class="openBookingModal" data-nannyid="${nanny.id}">Book</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- Footer -->
+<footer style="background-color: #343a40; color: white; padding: 40px 0;">
+    <div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+        <nav>
+            <ul style="list-style-type: none; margin: 0; padding: 0;">
+                <li style="margin-bottom: 10px;"><a href="/home" style="text-decoration: none; color: white;">Home</a></li>
+                <li style="margin-bottom: 10px;"><a href="find_a_nanny" style="text-decoration: none; color: white;">Find a Nanny</a></li>
+                <li style="margin-bottom: 10px;"><a href="post_a_job" style="text-decoration: none; color: white;">Post a Job</a></li>
+                <li style="margin-bottom: 10px;"><a href="/about_us" style="text-decoration: none; color: white;">About Us</a></li>
+                <li style="margin-bottom: 10px;"><a href="/testimonials" style="text-decoration: none; color: white;">Testimonials</a></li>
+                <li style="margin-bottom: 10px;"><a href="/blog" style="text-decoration: none; color: white;">Blog</a></li>
+                <li style="margin-bottom: 10px;"><a href="contact_us" style="text-decoration: none; color: white;">Contact Us</a></li>
+                <li style="margin-bottom: 10px;"><a href="/api/v1/auth/authenticate" style="text-decoration: none; color: white;">Sign up/in</a></li>
+            </ul>
+        </nav>
+        <div class="social-media">
+            <!-- Add your social media links here -->
+            <a href="your-facebook-link" style="margin-right: 10px;"><img src="facebook-icon.png" alt="Facebook" style="max-height: 30px;"></a>
+            <a href="your-twitter-link" style="margin-right: 10px;"><img src="twitter-icon.png" alt="Twitter" style="max-height: 30px;"></a>
+            <a href="your-instagram-link" style="margin-right: 10px;"><img src="instagram-icon.png" alt="Instagram" style="max-height: 30px;"></a>
+            <a href="your-linkedin-link"><img src="linkedin-icon.png" alt="LinkedIn" style="max-height: 30px;"></a>
+        </div>
+        <div class="contact-info">
+            <p>Email: info@yoursite.com</p>
+            <p>Phone: (123) 456-7890</p>
+            <p>Address: 123 Your Street, City, State, ZIP</p>
+        </div>
+        <div class="newsletter">
+            <h3 style="margin-bottom: 10px;">Subscribe to Our Newsletter</h3>
+            <form>
+                <input type="email" name="email" placeholder="Enter your email" style="padding: 5px; width: 70%;">
+                <button type="submit" style="padding: 5px 10px; background-color: #007bff; color: white; border: none; cursor: pointer;">Subscribe</button>
+            </form>
+        </div>
+    </div>
+</footer>
+
+<script>
+        function clearInput() {
+            document.getElementById("city").value = "";
+        }
+</script>
+<script>
+document.querySelectorAll('.read-more').forEach((readMoreLink) => {
+  readMoreLink.addEventListener('click', (event) => {
+    event.preventDefault();
+    const nannyCard = event.target.closest('.nanny-card');
+    const bioShort = nannyCard.querySelector('.bio-short');
+    const bioFull = nannyCard.querySelector('.bio-full');
+
+    if (bioShort.style.display === 'none') {
+      bioShort.style.display = 'block';
+      bioFull.style.display = 'none';
+      event.target.textContent = 'Read More';
+    } else {
+      bioShort.style.display = 'none';
+      bioFull.style.display = 'block';
+      event.target.textContent = 'Read Less';
+    }
+  });
+});
+</script>
+
+<!-- Booking Modal -->
+<div id="bookingModal" class="modal" style="display: none; position: fixed; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4);">
+    <div class="modal-content" style="background-color: #fefefe; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 50%;">
+        <span class="close" style="color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer;">&times;</span>
+        <div id="bookingFormContainer">
+            <!-- Booking form will be loaded here -->
+        </div>
+    </div>
+</div>
+
+<script>
+
+    // Get the modal
+var bookingModal = document.getElementById("bookingModal");
+
+// Get the button that opens the modal
+var openBookingModalButtons = document.getElementsByClassName("openBookingModal");
+
+// Get the <span> element that closes the modal
+var closeModal = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+for (var i = 0; i < openBookingModalButtons.length; i++) {
+    openBookingModalButtons[i].onclick = function () {
+        var nannyId = this.getAttribute("data-nannyid");
+        loadBookingForm(nannyId);
+        bookingModal.style.display = "block";
+    }
+}
+
+// When the user clicks on <span> (x), close the modal
+closeModal.onclick = function () {
+    bookingModal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+    if (event.target == bookingModal) {
+        bookingModal.style.display = "none";
+    }
+}
+
+// Function to load the booking form via AJAX
+function loadBookingForm(nannyId) {
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("bookingFormContainer").innerHTML = this.responseText;
+        }
+    };
+    xhr.open("GET", "/createBooking?nannyid=" + nannyId, true);
+    xhr.send();
+}
+
+</script>
+
+
+
+</body>
+
+</html>

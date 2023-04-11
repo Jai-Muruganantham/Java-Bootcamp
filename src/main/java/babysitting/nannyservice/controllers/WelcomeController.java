@@ -16,7 +16,7 @@ public class WelcomeController {
     }
     @GetMapping("/api/v1/auth/authenticate")
     public String loginPage() {
-        return "login";
+        return "login_v2";
     }
     @GetMapping("/home")
     public String home() {
@@ -45,6 +45,10 @@ public class WelcomeController {
     @GetMapping("/apply_as_nanny")
     public String apply_as_nanny() {
         return "apply_as_nanny";
+    }
+    @GetMapping("/find_a_nanny")
+    public String fina_a_nanny() {
+        return "find_a_nanny";
     }
 
 }
