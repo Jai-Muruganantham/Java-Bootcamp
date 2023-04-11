@@ -53,9 +53,9 @@
         <tbody>
         <tr th:each="nanny : ${nannies}">
             <td>
-                <a th:href="@{/nannysbio}" th:text="${nanny.name}"></a>
+                <a th:href="@{/nannysbio}" th:text="${nanny.user.firstname}"></a>
             </td>
-            <td th:text="${nanny.surname}"></td>
+            <td th:text="${nanny.user.lastname}"></td>
             <td th:text="${nanny.qualification}"></td>
             <td>
                 <a th:href="@{/createBooking(nannyid=${nanny.id})}">

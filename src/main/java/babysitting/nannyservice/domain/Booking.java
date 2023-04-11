@@ -19,7 +19,11 @@ public class Booking {
     @JoinColumn(name = "nannyid")
     private Nanny nanny;
 
-    @CreationTimestamp  // probuju
+    /*@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "bookeruserid")
+    private User user;*/
+
+    @CreationTimestamp
     @Column(name = "timestamp")
     private LocalDateTime timestamp;
 
@@ -31,6 +35,12 @@ public class Booking {
 
     @Column(name = "endtime")
     private LocalDateTime endTime;
+
+    @Column(name = "status")
+    @Enumerated(EnumType.STRING)
+    private BookingStatus status = BookingStatus.PENDING;
+
+
 
     public Booking(Nanny nanny, String message, LocalDateTime startTime, LocalDateTime endTime) {
         this.nanny = nanny;

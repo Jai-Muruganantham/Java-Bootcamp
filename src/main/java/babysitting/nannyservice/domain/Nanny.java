@@ -12,11 +12,11 @@ import jakarta.persistence.*;
         @Column(name = "id")
         private Long id;
 
-        @Column(name = "name", nullable = false)
+      /*  @Column(name = "name", nullable = false)
         private String name;
 
         @Column(name = "surname", nullable = false)
-        private String surname;
+        private String surname;*/
 
         @Column(name = "qualification", nullable = false)
         private String qualification;
@@ -24,24 +24,28 @@ import jakarta.persistence.*;
         @Column(name = "city", nullable = false)
         private String city;
 
-        @Column (name = "userid", nullable = false)
-        private Long userid;
+       /* @Column (name = "userid", nullable = false)
+        private Long userid;*/
 
-      //  @OneToOne
-      //  @JoinColumn(name = "user_id") //check if annotation ok
-      //  private User user;
+        @OneToOne(fetch = FetchType.LAZY)
+        @JoinColumn(name = "userid")
+        private User user;
 
+        @Column(name = "bio", columnDefinition = "TEXT")
+        private String bio;
+
+        @Column(name = "experience")
+        private int experience;
 
 
         public Nanny() {}
 
-        public Nanny(Long id, String name, String surname, String qualification, String city, Long userid) {
+
+        public Nanny(Long id,  String qualification, String city, User user) {
             this.id = id;
-            this.name = name;
-            this.surname = surname;
             this.qualification = qualification;
             this.city = city;
-            this.userid = userid;
+            this.user = user;
         }
 
         public Long getId() {
@@ -52,21 +56,6 @@ import jakarta.persistence.*;
             this.id = id;
         }
 
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public String getSurname() {
-            return surname;
-        }
-
-        public void setSurname(String surname) {
-            this.surname = surname;
-        }
 
         public String getQualification() {
             return qualification;
@@ -84,24 +73,28 @@ import jakarta.persistence.*;
             this.city = city;
         }
 
-        public Long getUserid() {
-            return userid;
+        public User getUser() {
+            return user;
         }
 
-        public void setUserid(Long userid) {
-            this.userid = userid;
+        public void setUser(User user) {
+            this.user = user;
         }
 
-        @Override
-        public String toString() {
-            return "Nanny{" +
-                    "id=" + id +
-                    ", name='" + name + '\'' +
-                    ", surname='" + surname + '\'' +
-                    ", qualification='" + qualification + '\'' +
-                    ", city='" + city + '\'' +
-                    ", userid=" + userid +
-                    '}';
+        public String getBio() {
+            return bio;
+        }
+
+        public void setBio(String bio) {
+            this.bio = bio;
+        }
+
+        public int getExperience() {
+            return experience;
+        }
+
+        public void setExperience(int experience) {
+            this.experience = experience;
         }
     }
 

@@ -34,7 +34,7 @@ public class SearchNanniesService {
 
     private List<Nanny> search(SearchNanniesRequest request) {
         List<Nanny> nannies = new ArrayList<>();
-        if (request.isCityProvided() && !request.isNameProvided()) {
+      /*  if (request.isCityProvided() && !request.isNameProvided()) {
             nannies = repository.findByCity(request.getCity());
         }
         if (!request.isCityProvided() && request.isNameProvided()) {
@@ -42,6 +42,9 @@ public class SearchNanniesService {
         }
         if (request.isCityProvided() && request.isNameProvided()) {
             nannies = repository.findByNameAndCity(request.getName(), request.getCity());
+        }*/
+        if (request.isCityProvided()) {
+            nannies = repository.findByCity(request.getCity());
         }
         if (request.isIdProvided()) {
             Optional<Nanny> nannyOptional = repository.findById(request.getId());

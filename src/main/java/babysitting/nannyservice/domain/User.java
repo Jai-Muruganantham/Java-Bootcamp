@@ -24,17 +24,21 @@ public class User implements UserDetails {
     @Column(name = "userid")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userid;
+
+    @Column(name = "firstname", nullable = false)  // by added kristina
     private String firstname;
+
+    @Column(name = "lastname", nullable = false) // by added kristina
     private String lastname;
 
     private String email;
 
-
     private String password;
 
+    @Column(name = "role")  // added by kristina
     @Enumerated(EnumType.STRING)
+    private UserRole role = UserRole.USER; // by added kristina
 
-    private UserRole role;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
