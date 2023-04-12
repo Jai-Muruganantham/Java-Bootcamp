@@ -23,7 +23,6 @@ public class CreateBookingRequestValidator {
         validateMessage(request).ifPresent(errors::add);
         validateStartTime(request).ifPresent(errors::add);
         validateEndTime(request).ifPresent(errors::add);
-        validateForBookingOverlap(request).ifPresent(errors::add);
         return errors;
     }
 
@@ -40,6 +39,20 @@ public class CreateBookingRequestValidator {
         } else if (startTime.isBefore(LocalDateTime.now())) {
             return Optional.of(new CoreError("Start time", "must be in the future!"));
         }
+
+        // checks for overlap with existing booking
+        List<Booking> bookings = bookingRepository.findByNannyId(request.getNannyid());
+        Optional<Booking> existingBooking = bookings.stream()
+                .filter(booking -> booking.getStartTime().isBefore(request.getEndtime()) && booking.getEndTime().isAfter(request.getStarttime()))
+                .findFirst();
+        if (existingBooking.isPresent()) {
+            LocalDateTime overlappingStartTime = existingBooking.get().getStartTime();
+            LocalDateTime overlappingEndTime = existingBooking.get().getEndTime();
+            String message = String.format("must not overlap with existing booking for this nanny from %s to %s",
+                    overlappingStartTime, overlappingEndTime);
+            return Optional.of(new CoreError("Booking time", message));
+        }
+
         return Optional.empty();
     }
 
@@ -52,21 +65,4 @@ public class CreateBookingRequestValidator {
         }
         return Optional.empty();
     }
-
-
-    private Optional<CoreError> validateForBookingOverlap(CreateBookingRequest request) {
-        List<Booking> bookings = bookingRepository.findByNannyId(request.getNannyid());
-        Optional<Booking> existingBooking = bookings.stream()
-                .filter(booking -> booking.getStartTime().isBefore(request.getEndtime()) && booking.getEndTime().isAfter(request.getStarttime()))
-                .findFirst();
-        if (existingBooking.isPresent()) {
-            LocalDateTime overlappingStartTime = existingBooking.get().getStartTime();
-            LocalDateTime overlappingEndTime = existingBooking.get().getEndTime();
-            String message = String.format("must not overlap with existing booking for this nanny from %s to %s",
-                    overlappingStartTime, overlappingEndTime);
-            return Optional.of(new CoreError("Booking time", message));
-        }
-        return Optional.empty();
-    }
-
 }
