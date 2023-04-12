@@ -16,7 +16,10 @@ public class CreateBookingController {
     @Autowired
     private JpaNannyRepository nannyRepository;
 
-
+    @GetMapping("/success")
+    public String welcome() {
+        return "success";
+    }
     @GetMapping("/createBooking")
     public String showBookingRequestForm(@RequestParam Long nannyid, ModelMap modelMap) {
         CreateBookingRequest request = new CreateBookingRequest();
@@ -32,7 +35,7 @@ public class CreateBookingController {
             modelMap.addAttribute("errors", response.getErrors());
             return "bookingform";  // amend html template according to new postmapping
         } else {
-            return "redirect:/searchNannies";
+            return "redirect:/success";
         }
     }
 
