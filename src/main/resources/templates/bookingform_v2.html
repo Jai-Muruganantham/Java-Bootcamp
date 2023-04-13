@@ -119,6 +119,8 @@ nav ul li a:hover {
   <form th:action="@{/createBooking}" th:object="${request}" method="post">
     <input type="hidden" th:field="*{timestamp}" th:value="${#temporals.format(#temporals.createNow(), 'yyyy-MM-dd HH:mm:ss')}" />
     <input type="hidden" th:field="*{nannyid}" th:value="${nannyid}" />
+    <input type="text" th:field="*{bookeruserid}" th:value="{bookeruserid}" />
+
     <div class="form-group">
       <label for="message">Message:</label>
       <input type="text" class="form-control" id="message" th:field="*{message}" />

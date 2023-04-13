@@ -19,9 +19,9 @@ public class Booking {
     @JoinColumn(name = "nannyid")
     private Nanny nanny;
 
-    /*@ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "bookeruserid")
-    private User user;*/
+    private User user;
 
     @CreationTimestamp
     @Column(name = "timestamp")
@@ -105,15 +105,25 @@ public class Booking {
         this.endTime = endTime;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     @Override
     public String toString() {
         return "Booking{" +
                 "id=" + id +
                 ", nanny=" + nanny +
+                ", user=" + user +
                 ", timestamp=" + timestamp +
                 ", message='" + message + '\'' +
                 ", startTime=" + startTime +
                 ", endTime=" + endTime +
+                ", status=" + status +
                 '}';
     }
 }

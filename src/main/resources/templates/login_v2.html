@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -158,17 +158,17 @@ body, html {
 <!-- Header -->
 <header style="background-color: #f8f9fa; padding: 20px;">
     <div class="logo" style="display: inline-block;">
-        <img src="logo.png" alt="Logo" style="max-height: 50px;">
+        <img th:src="@{/logo.png}" alt="Logo" style="max-height: 50px;">
     </div>
     <nav style="display: inline-block; float: right;">
         <ul style="list-style-type: none; margin: 0; padding: 0; overflow: hidden;">
             <li style="display: inline; margin-right: 20px;"><a href="/home" style="text-decoration: none; color: #333;">Home</a></li>
-            <li style="display: inline; margin-right: 20px;"><a href="/find_a_nanny" style="text-decoration: none; color: #333;">Find a Nanny</a></li>
-            <li style="display: inline; margin-right: 20px;"><a href="/apply_as_nanny" style="text-decoration: none; color: #333;">Post a Job</a></li>
-            <li style="display: inline; margin-right: 20px;"><a href="/about_us" style="text-decoration: none; color: #333;">About Us</a></li>
-            <li style="display: inline; margin-right: 20px;"><a href="/testimonials" style="text-decoration: none; color: #333;">Testimonials</a></li>
-            <li style="display: inline; margin-right: 20px;"><a href="/blog" style="text-decoration: none; color: #333;">Blog</a></li>
-            <li style="display: inline; margin-right: 20px;"><a href="/contact_us" style="text-decoration: none; color: #333;">Contact Us</a></li>
+            <li style="display: inline; margin-right: 20px;"><a href="/home/find_a_nanny" style="text-decoration: none; color: #333;">Find a Nanny</a></li>
+            <li style="display: inline; margin-right: 20px;"><a href="/home/apply_as_nanny" style="text-decoration: none; color: #333;">Post a Job</a></li>
+            <li style="display: inline; margin-right: 20px;"><a href="/home/about_us" style="text-decoration: none; color: #333;">About Us</a></li>
+            <li style="display: inline; margin-right: 20px;"><a href="/home/testimonials" style="text-decoration: none; color: #333;">Testimonials</a></li>
+            <li style="display: inline; margin-right: 20px;"><a href="/home/blog" style="text-decoration: none; color: #333;">Blog</a></li>
+            <li style="display: inline; margin-right: 20px;"><a href="/home/contact_us" style="text-decoration: none; color: #333;">Contact Us</a></li>
             <li style="display: inline; margin-right: 20px;"><a href="/api/v1/auth/authenticate" style="text-decoration: none; color: #333;">Sing up/in</a></li>
 
         </ul>
@@ -197,12 +197,12 @@ body, html {
         <nav>
             <ul style="list-style-type: none; margin: 0; padding: 0;">
                 <li style="margin-bottom: 10px;"><a href="/home" style="text-decoration: none; color: white;">Home</a></li>
-                <li style="margin-bottom: 10px;"><a href="/find_a_nanny" style="text-decoration: none; color: white;">Find a Nanny</a></li>
-                <li style="margin-bottom: 10px;"><a href="/apply_as_nanny" style="text-decoration: none; color: white;">Post a Job</a></li>
-                <li style="margin-bottom: 10px;"><a href="/about_us" style="text-decoration: none; color: white;">About Us</a></li>
-                <li style="margin-bottom: 10px;"><a href="/testimonials" style="text-decoration: none; color: white;">Testimonials</a></li>
-                <li style="margin-bottom: 10px;"><a href="/blog" style="text-decoration: none; color: white;">Blog</a></li>
-                <li style="margin-bottom: 10px;"><a href="contact_us" style="text-decoration: none; color: white;">Contact Us</a></li>
+                <li style="margin-bottom: 10px;"><a href="/home/find_a_nanny" style="text-decoration: none; color: white;">Find a Nanny</a></li>
+                <li style="margin-bottom: 10px;"><a href="/home/apply_as_nanny" style="text-decoration: none; color: white;">Post a Job</a></li>
+                <li style="margin-bottom: 10px;"><a href="/home/about_us" style="text-decoration: none; color: white;">About Us</a></li>
+                <li style="margin-bottom: 10px;"><a href="/home/testimonials" style="text-decoration: none; color: white;">Testimonials</a></li>
+                <li style="margin-bottom: 10px;"><a href="/home/blog" style="text-decoration: none; color: white;">Blog</a></li>
+                <li style="margin-bottom: 10px;"><a href="/home/contact_us" style="text-decoration: none; color: white;">Contact Us</a></li>
                 <li style="margin-bottom: 10px;"><a href="/api/v1/auth/authenticate" style="text-decoration: none; color: white;">Sign up/in</a></li>
             </ul>
         </nav>
@@ -238,7 +238,7 @@ body, html {
 
      //const viewNanniesLink = document.getElementById('viewNanniesLink');
 
-      const response = await fetch('http://localhost:8080/welcome', {
+      const response = await fetch('http://localhost:8080/home/profile', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

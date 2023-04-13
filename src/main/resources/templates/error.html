@@ -1,13 +1,45 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apply as a Nanny - Your Babysitting Site</title>
+    <title>Your Babysitting Site</title>
     <span class="mobile-menu" onclick="toggleMenu()" style="display: none; float: right; font-size: 30px;">&#9776;</span>
+    <style>
+        /* CSS styles from the original page */
 
+        /* Additional styles for the success page */
 
+        .success-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .success-message {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #007bff;
+            animation: rainbow 5s infinite;
+        }
+
+        .success-button {
+            background-color: #007bff;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: white;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .success-button:hover {
+            background-color: #28a745;
+        }
+    </style>
     <style>
 @keyframes rainbow {
     0% {
@@ -26,6 +58,7 @@
         color: #007bff;
     }
 }
+
 
 nav ul li a:hover {
     text-decoration: underline;
@@ -86,7 +119,6 @@ nav ul li a:hover {
         }
     }
 </style>
-
 </head>
 
 <body style="font-family: Arial, sans-serif; margin: 0; padding: 0; box-sizing: border-box;">
@@ -94,52 +126,27 @@ nav ul li a:hover {
 <!-- Header -->
 <header style="background-color: #f8f9fa; padding: 20px;">
     <div class="logo" style="display: inline-block;">
-        <img th:src="@{/logo.png}"  alt="Logo" style="max-height: 50px;">
+        <img src="logo.png" alt="Logo" style="max-height: 50px;">
     </div>
     <nav style="display: inline-block; float: right;">
         <ul style="list-style-type: none; margin: 0; padding: 0; overflow: hidden;">
             <li style="display: inline; margin-right: 20px;"><a href="/home" style="text-decoration: none; color: #333;">Home</a></li>
-            <li style="display: inline; margin-right: 20px;"><a href="/home/find_a_nanny" style="text-decoration: none; color: #333;">Find a Nanny</a></li>
-            <li style="display: inline; margin-right: 20px;"><a href="/home/apply_as_nanny" style="text-decoration: none; color: #333;">Post a Job</a></li>
-            <li style="display: inline; margin-right: 20px;"><a href="/home/about_us" style="text-decoration: none; color: #333;">About Us</a></li>
-            <li style="display: inline; margin-right: 20px;"><a href="/home/testimonials" style="text-decoration: none; color: #333;">Testimonials</a></li>
-            <li style="display: inline; margin-right: 20px;"><a href="/home/blog" style="text-decoration: none; color: #333;">Blog</a></li>
-            <li style="display: inline; margin-right: 20px;"><a href="/home/contact_us" style="text-decoration: none; color: #333;">Contact Us</a></li>
+            <li style="display: inline; margin-right: 20px;"><a href="/find_a_nanny" style="text-decoration: none; color: #333;">Find a Nanny</a></li>
+            <li style="display: inline; margin-right: 20px;"><a href="/apply_as_nanny" style="text-decoration: none; color: #333;">Post a Job</a></li>
+            <li style="display: inline; margin-right: 20px;"><a href="/about_us" style="text-decoration: none; color: #333;">About Us</a></li>
+            <li style="display: inline; margin-right: 20px;"><a href="/testimonials" style="text-decoration: none; color: #333;">Testimonials</a></li>
+            <li style="display: inline; margin-right: 20px;"><a href="/blog" style="text-decoration: none; color: #333;">Blog</a></li>
+            <li style="display: inline; margin-right: 20px;"><a href="/contact_us" style="text-decoration: none; color: #333;">Contact Us</a></li>
             <li style="display: inline; margin-right: 20px;"><a href="/api/v1/auth/authenticate" style="text-decoration: none; color: #333;">Sing up/in</a></li>
+
         </ul>
     </nav>
 </header>
 
-
-<!-- Apply as a Nanny Section -->
-<section class="apply-as-nanny" style="padding: 60px 0; text-align: center;">
-    <h1 style="font-size: 3em; margin-bottom: 20px;">Apply as a Nanny</h1>
-    <p style="font-size: 1.2em; margin-bottom: 30px;">Join our platform and connect with families in need of professional childcare services.</p>
-
-    <!-- Application Form -->
-    <div style="width: 80%; margin: 0 auto;">
-        <form>
-            <label for="name">Full Name:</label>
-            <input type="text" id="name" name="name" required><br><br>
-
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required><br><br>
-
-            <label for="phone">Phone Number:</label>
-            <input type="tel" id="phone" name="phone" required><br><br>
-
-            <label for="location">Location:</label>
-            <input type="text" id="location" name="location" required><br><br>
-
-            <label for="experience">Years of Experience:</label>
-            <input type="number" id="experience" name="experience" min="0" required><br><br>
-
-            <label for="bio">Tell us about yourself:</label><br>
-            <textarea id="bio" name="bio" rows="4" cols="50" required></textarea><br><br>
-
-            <button type="submit" style="padding: 10px 20px; background-color: #007bff; color: white; border: none; cursor: pointer;">Submit Application</button>
-        </form>
-    </div>
+<!-- Success Message Section -->
+<section class="success-container">
+    <h1 class="success-message">Please login! you don't have access</h1>
+    <a href="/home" class="success-button">Go to home!</a>
 </section>
 
 <!-- Footer -->
@@ -147,12 +154,14 @@ nav ul li a:hover {
     <div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
         <nav>
             <ul style="list-style-type: none; margin: 0; padding: 0;">
-                <li style="margin-bottom: 10px;"><a href="/home/find_a_nanny" style="text-decoration: none; color: white;">Find a Nanny</a></li>
-                <li style="margin-bottom: 10px;"><a href="/home/post_a_job" style="text-decoration: none; color: white;">Post a Job</a></li>
-                <li style="margin-bottom: 10px;"><a href="/home/about_us" style="text-decoration: none; color: white;">About Us</a></li>
-                <li style="margin-bottom: 10px;"><a href="/home/testimonials" style="text-decoration: none; color: white;">Testimonials</a></li>
-                <li style="margin-bottom: 10px;"><a href="/home/blog" style="text-decoration: none; color: white;">Blog</a></li>
-                <li style="margin-bottom: 10px;"><a href="/home/contact_us" style="text-decoration: none; color: white;">Contact Us</a></li>
+                <li style="margin-bottom: 10px;"><a href="/home" style="text-decoration: none; color: white;">Home</a></li>
+                <li style="margin-bottom: 10px;"><a href="find_a_nanny" style="text-decoration: none; color: white;">Find a Nanny</a></li>
+                <li style="margin-bottom: 10px;"><a href="post_a_job" style="text-decoration: none; color: white;">Post a Job</a></li>
+                <li style="margin-bottom: 10px;"><a href="/about_us" style="text-decoration: none; color: white;">About Us</a></li>
+                <li style="margin-bottom: 10px;"><a href="/testimonials" style="text-decoration: none; color: white;">Testimonials</a></li>
+                <li style="margin-bottom: 10px;"><a href="/blog" style="text-decoration: none; color: white;">Blog</a></li>
+                <li style="margin-bottom: 10px;"><a href="contact_us" style="text-decoration: none; color: white;">Contact Us</a></li>
+                <li style="margin-bottom: 10px;"><a href="/api/v1/auth/authenticate" style="text-decoration: none; color: white;">Sign up/in</a></li>
             </ul>
         </nav>
         <div class="social-media">
@@ -165,7 +174,6 @@ nav ul li a:hover {
         <div class="contact-info">
             <p>Email: info@yoursite.com</p>
             <p>Phone: (123) 456-7890</p>
-
             <p>Address: 123 Your Street, City, State, ZIP</p>
         </div>
         <div class="newsletter">
@@ -177,12 +185,13 @@ nav ul li a:hover {
         </div>
     </div>
 </footer>
+
 <script>
         function toggleMenu() {
             var nav = document.querySelector('nav');
             nav.classList.toggle('show');
         }
- </script>
+    </script>
 </body>
 
 </html>
