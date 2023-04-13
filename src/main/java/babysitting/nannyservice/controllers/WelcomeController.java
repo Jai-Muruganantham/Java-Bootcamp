@@ -33,10 +33,10 @@ public class WelcomeController {
         return "contact_us";
     }
 
-    @GetMapping("/apply_as_nanny")
-    public String apply_as_nanny() {
-        return "apply_as_nanny";
-    }
+//    @GetMapping("/apply_as_nanny")
+//    public String apply_as_nanny() {
+//        return "apply_as_nanny";
+//    }
 
     @GetMapping("/find_a_nanny")
     public String fina_a_nanny() {
