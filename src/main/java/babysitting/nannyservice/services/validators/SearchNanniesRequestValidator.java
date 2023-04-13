@@ -26,23 +26,4 @@ public class SearchNanniesRequestValidator {
                 : Optional.empty();
     }
 
-       /* public List<CoreError> validate(SearchNanniesRequest request) {
-        List<CoreError> errors = new ArrayList<>();
-        errors.addAll(validateSearchFields(request));
-        return errors;
-    }*/
-
-/*
-
-    private List<CoreError> validateSearchFields(SearchNanniesRequest request) {
-        List<CoreError> errors = new ArrayList<>();
-        if (isEmpty(request.getCity())) {
-            errors.add(new CoreError("City", "must not be empty!"));
-        }
-        return errors;
-    }
-
-    private boolean isEmpty(String str) {
-        return str == null || str.isEmpty();
-    }*/
 }

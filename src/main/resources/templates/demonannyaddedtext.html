@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Confirmation</title>
+    <style>
+    /* Center the text horizontally and vertically */
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    /* Style the text */
+    .message {
+      font-size: 24pt;
+      font-weight: bold;
+      color: #9370DB;
+    }
+  </style>
+</head>
+<body>
+<div class="message" th:text="'You are now registered as a Nanny!'"></div>
+</body>
+</html>

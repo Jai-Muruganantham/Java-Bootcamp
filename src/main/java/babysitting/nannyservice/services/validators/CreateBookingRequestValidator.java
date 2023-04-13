@@ -23,6 +23,7 @@ public class CreateBookingRequestValidator {
         validateMessage(request).ifPresent(errors::add);
         validateStartTime(request).ifPresent(errors::add);
         validateEndTime(request).ifPresent(errors::add);
+        validateOverlappingBooking(request).ifPresent(errors::add);
         return errors;
     }
 
@@ -32,6 +33,20 @@ public class CreateBookingRequestValidator {
                 : Optional.empty();
     }
 
+    private Optional<CoreError> validateEndTime(CreateBookingRequest request) {
+        LocalDateTime endTime = request.getEndtime();
+        LocalDateTime startTime = request.getStarttime();
+        if (endTime == null) {
+            return Optional.of(new CoreError("End time", "must not be empty!"));
+        } else if (endTime.isBefore(LocalDateTime.now())) {
+            return Optional.of(new CoreError("End time", "must be in the future!"));
+        } else if (endTime.isBefore(startTime)) {
+            return Optional.of(new CoreError("End time", "must be after start time!"));
+        }
+        return Optional.empty();
+    }
+
+
     private Optional<CoreError> validateStartTime(CreateBookingRequest request) {
         LocalDateTime startTime = request.getStarttime();
         if (startTime == null) {
@@ -39,11 +54,19 @@ public class CreateBookingRequestValidator {
         } else if (startTime.isBefore(LocalDateTime.now())) {
             return Optional.of(new CoreError("Start time", "must be in the future!"));
         }
+        return Optional.empty();
+    }
 
-        // checks for overlap with existing booking
+    private Optional<CoreError> validateOverlappingBooking(CreateBookingRequest request) {
+        LocalDateTime endTime = request.getEndtime();
+        LocalDateTime startTime = request.getStarttime();
+        if (startTime == null || endTime == null) {
+            return Optional.of(new CoreError("Booking time", "Both start time and end time are required for checking overlapping bookings"));
+        }
+
         List<Booking> bookings = bookingRepository.findByNannyId(request.getNannyid());
         Optional<Booking> existingBooking = bookings.stream()
-                .filter(booking -> booking.getStartTime().isBefore(request.getEndtime()) && booking.getEndTime().isAfter(request.getStarttime()))
+                .filter(booking -> booking.getStartTime().isBefore(endTime) && booking.getEndTime().isAfter(startTime))
                 .findFirst();
         if (existingBooking.isPresent()) {
             LocalDateTime overlappingStartTime = existingBooking.get().getStartTime();
@@ -56,13 +79,5 @@ public class CreateBookingRequestValidator {
         return Optional.empty();
     }
 
-    private Optional<CoreError> validateEndTime(CreateBookingRequest request) {
-        LocalDateTime endTime = request.getEndtime();
-        if (endTime == null) {
-            return Optional.of(new CoreError("End time", "must not be empty!"));
-        } else if (endTime.isBefore(LocalDateTime.now())) {
-            return Optional.of(new CoreError("End time", "must be in the future!"));
-        }
-        return Optional.empty();
-    }
+
 }

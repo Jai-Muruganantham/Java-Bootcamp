@@ -23,21 +23,22 @@ public class User implements UserDetails {
     @Id
     @Column(name = "userid")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer userid;
+    //private Integer userid;
+    private Integer id;
 
-    @Column(name = "firstname", nullable = false)  // by added kristina
+    @Column(name = "firstname", nullable = false)
     private String firstname;
 
-    @Column(name = "lastname", nullable = false) // by added kristina
+    @Column(name = "lastname", nullable = false)
     private String lastname;
 
     private String email;
 
     private String password;
 
-    @Column(name = "role")  // added by kristina
+    @Column(name = "role")
     @Enumerated(EnumType.STRING)
-    private UserRole role = UserRole.USER; // by added kristina
+    private UserRole role = UserRole.USER;
 
 
     @Override
