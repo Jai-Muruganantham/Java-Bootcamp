@@ -21,15 +21,24 @@ public class CreateBookingController {
         return "success";
     }
     @GetMapping("/createBooking")
-    public String showBookingRequestForm(@RequestParam Long nannyid, ModelMap modelMap) {
+    public String showBookingRequestForm(@RequestParam Long nannyid,@RequestParam Integer bookeruserid, ModelMap modelMap) {
         CreateBookingRequest request = new CreateBookingRequest();
         request.setNannyid(nannyid);
+        request.setBookeruserid(bookeruserid);
+        System.out.println("The value in get is "+bookeruserid);
         modelMap.addAttribute("request", request);
         return "bookingform";
     }
+//    @ModelAttribute("request")
+//    public CreateBookingRequest createBookingRequestModel() {
+//        CreateBookingRequest request = new CreateBookingRequest();
+//        request.setBookeruserid(6); // set a default value for bookeruserid
+//        return request;
+//    }
 
     @PostMapping("/createBooking")
     public String processCreateBookingRequest(@ModelAttribute(value = "request") CreateBookingRequest request, ModelMap modelMap) {
+        System.out.println("the value is"+request.getBookeruserid() );
         CreateBookingResponse response = bookingsService.execute(request);
         if (response.hasErrors()) {
             modelMap.addAttribute("errors", response.getErrors());

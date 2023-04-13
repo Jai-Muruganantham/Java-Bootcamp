@@ -5,6 +5,8 @@ import java.time.LocalDateTime;
 public class CreateBookingRequest {
 
     private Long nannyid;
+
+    private Integer bookeruserid;
     private LocalDateTime timestamp;
     private String message;
     private LocalDateTime starttime;
@@ -59,6 +61,14 @@ public class CreateBookingRequest {
 
     public LocalDateTime getEndtime() {
         return endtime;
+    }
+
+    public Integer getBookeruserid() {
+        return bookeruserid;
+    }
+
+    public void setBookeruserid(Integer bookeruserid) {
+        this.bookeruserid = bookeruserid;
     }
 
     public void setEndtime(LocalDateTime endtime) {
