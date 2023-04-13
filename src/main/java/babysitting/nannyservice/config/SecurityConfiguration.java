@@ -32,6 +32,8 @@ public class SecurityConfiguration {
             .permitAll()
             .requestMatchers("/**")
             .permitAll()
+            .requestMatchers("/home/**","/home")
+            .permitAll()
             .requestMatchers(HttpMethod.GET,"/welcome")
             .authenticated()
             .requestMatchers(HttpMethod.GET,"/showAllNannies")
