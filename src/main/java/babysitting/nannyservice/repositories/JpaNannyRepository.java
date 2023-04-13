@@ -14,4 +14,6 @@ public interface JpaNannyRepository extends JpaRepository<Nanny, Long> {
 
     List<Nanny> findByCity (String city);
 
+    boolean existsByUserId(Integer userid);
+
 }

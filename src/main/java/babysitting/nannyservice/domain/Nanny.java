@@ -12,11 +12,6 @@ import jakarta.persistence.*;
         @Column(name = "id")
         private Long id;
 
-      /*  @Column(name = "name", nullable = false)
-        private String name;
-
-        @Column(name = "surname", nullable = false)
-        private String surname;*/
 
         @Column(name = "qualification", nullable = false)
         private String qualification;
@@ -41,11 +36,12 @@ import jakarta.persistence.*;
         public Nanny() {}
 
 
-        public Nanny(Long id,  String qualification, String city, User user) {
-            this.id = id;
+        public Nanny(String qualification, String city, User user, String bio, int experience) {
             this.qualification = qualification;
             this.city = city;
             this.user = user;
+            this.bio = bio;
+            this.experience = experience;
         }
 
         public Long getId() {
@@ -55,7 +51,6 @@ import jakarta.persistence.*;
         public void setId(Long id) {
             this.id = id;
         }
-
 
         public String getQualification() {
             return qualification;
