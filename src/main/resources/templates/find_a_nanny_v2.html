@@ -175,7 +175,7 @@ nav ul li a:hover {
     <!-- Display search results in cards -->
     <div th:if="${nannies != null}" style="display: flex; flex-wrap: wrap; justify-content: center;">
         <div th:each="nanny : ${nannies}" class="nanny-card" style="background-color: #B9D9EB;">
-            <img src="nanny-image-placeholder.jpg" alt="Nanny Image" th:alt="${nanny.user.firstname + ' ' + nanny.user.lastname}">
+            <img th:src="@{logo.png}" alt="Nanny Image" th:alt="${nanny.user.firstname + ' ' + nanny.user.lastname}">
             <h3 th:text="${nanny.user.firstname + ' ' + nanny.user.lastname}"></h3>
             <p th:text="'Qualification: ' + ${nanny.qualification}"></p>
             <p class="bio-short" th:text="'Bio: ' + ${nanny.bio.substring(0, 100)}" style="white-space: pre-wrap; display: block;"></p>

@@ -12,10 +12,10 @@ import io.swagger.v3.oas.annotations.security.SecurityScheme;
 		scheme = "bearer"
 )
 
-public class NannyserviceApplication {
+public class NannyServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(NannyserviceApplication.class, args);
+		SpringApplication.run(NannyServiceApplication.class, args);
 	}
 
 }
