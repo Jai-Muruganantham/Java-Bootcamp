@@ -183,7 +183,7 @@ nav ul li a:hover {
             <a href="#" class="read-more" style="text-decoration: none;">Read More</a>
             <!-- Add more information about the nanny if needed -->
             <div style="text-align: right;">
-                <a th:href="@{/createBooking(nannyid=${nanny.id}, bookeruserid=6)}">
+                <a th:href="@{/createBooking(nannyid=${nanny.id}, bookeruserid=25)}">
                     <button class="openBookingModal" data-nannyid="${nanny.id}">Book</button>
                 </a>
             </div>
@@ -305,7 +305,7 @@ function loadBookingForm(nannyId) {
             document.getElementById("bookingFormContainer").innerHTML = this.responseText;
         }
     };
-    xhr.open("GET", "/createBooking?nannyid=" + nannyId+"&bookeruserid=6", true);
+    xhr.open("GET", "/createBooking?nannyid=" + nannyId+"&bookeruserid=25", true);
     xhr.send();
 }
 

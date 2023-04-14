@@ -16,4 +16,6 @@ public interface JpaNannyRepository extends JpaRepository<Nanny, Long> {
 
     boolean existsByUserId(Integer userid);
 
+    Optional<Nanny> findById(Long id);
+
 }
