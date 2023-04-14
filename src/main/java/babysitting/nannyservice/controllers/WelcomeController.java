@@ -43,10 +43,7 @@ public class WelcomeController {
         return "find_a_nanny";
     }
 
-    @GetMapping("/profile")
-    public String profile() {
-        return "profile";
-    }
+
 
 }
 

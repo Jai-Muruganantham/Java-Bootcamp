@@ -32,7 +32,7 @@ public class SecurityConfiguration {
             .permitAll()
             .requestMatchers("/**")
             .permitAll()
-            .requestMatchers("/resources/**")
+            .requestMatchers("/**.png")
             .permitAll()
             .requestMatchers("/home/**")
             .permitAll()
