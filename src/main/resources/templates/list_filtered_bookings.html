@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>List of bookings</title>
+
+  <style>
+        table {
+            border-collapse: collapse;
+            width: 50%;
+        }
+        th, td {
+            text-align: left;
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+
+</head>
+<body>
+<h2>List of bookings (<span th:text="${bookings.size()}"></span>)</h2>
+<button onclick="location.href='/showBookingsForUser'">Refresh</button>
+<div th:if="${message}">
+  <p th:text="${message}"></p>
+</div>
+<table>
+  <thead>
+  <tr>
+    <th>Booking creation date</th>
+    <th>Booking number</th>
+    <th>City</th>
+    <th>Name of nanny</th>
+    <th>Start time</th>
+    <th>End time</th>
+    <th>Status</th>
+    <th>Action</th>
+
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="booking : ${bookings}">
+    <td th:text="${booking.timestamp}"></td>
+    <td th:text="${booking.id}"></td>
+    <td th:text="${booking.nanny.city}"></td>
+    <td th:text="${booking.nanny.user.firstname}"></td>
+    <td th:text="${booking.startTime}"></td>
+    <td th:text="${booking.endTime}"></td>
+    <td th:text="${booking.status}"></td>
+    <td>
+      <form th:action="@{/showBookingsForUser}" th:method="post">
+        <input type="hidden" name="id" th:value="${booking.id}">
+        <button type="submit">Cancel</button>
+      </form>
+    </td>
+
+
+
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>

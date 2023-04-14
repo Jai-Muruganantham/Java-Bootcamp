@@ -113,6 +113,14 @@ public class Booking {
         this.user = user;
     }
 
+    public BookingStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(BookingStatus status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
         return "Booking{" +
