@@ -5,6 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - Your Babysitting Site</title>
+    <style>
+    .team-member {
+        display: inline-block;
+        width: 45%;
+        margin: 20px;
+    }
+
+    .team-member img {
+        width: 100%;
+        height: auto;
+        border-radius: 50%;
+    }
+</style>
 </head>
 
 <body style="font-family: Arial, sans-serif; margin: 0; padding: 0; box-sizing: border-box;">
@@ -41,16 +54,50 @@
         <!-- Our Team Section -->
     <section class="our-team" style="padding: 60px 0; text-align: center;">
         <h2 style="font-size: 2.5em; margin-bottom: 30px;">Meet Our Team</h2>
-        <div style="display: flex; justify-content: center; flex-wrap: wrap;">
-            <!-- Add team member profiles -->
-            <div class="team-member" style="flex: 0 0 300px; margin: 20px;">
-                <img src="team-member-1.jpg" alt="Team Member 1" style="width: 100%; height: auto;">
-                <h3 style="font-size: 1.8em; margin: 10px 0;">MR. J</h3>
-                <p style="font-size: 1.2em;">Founder & CEO</p>
+        <div>
+            <div class="team-member">
+                <img th:src="@{/jai.jpg}"  alt="Team Member 2"style="width: 200px; height: auto;">
+                <h3 style="font-size: 1.8em; margin: 10px 0;">Mr. Muruganantham Jaisankar</h3>
+                <p style="font-size: 1.2em;">Master's in AI in Computer Science</p>
+                <p style="font-size: 1.2em;">Aspiring Software Engineer</p>
             </div>
-            <!-- Repeat for additional team members -->
+            <div class="team-member">
+                <img src="team-member-3.jpg" alt="Team Member 3">
+                <h3>Ms Kristine</h3>
+                <p>CXDSFS</p>
+                <p>XXYY</p>
+            </div>
         </div>
     </section>
+
+    <section class="project-section" style="padding: 60px 0; text-align: center;">
+        <h2 style="font-size: 2.5em; margin-bottom: 30px;">Our Project</h2>
+        <div style="display: flex; justify-content: center; flex-wrap: wrap;">
+            <div class="project-item" style="flex: 0 0 300px; margin: 20px;">
+                <img src="spring-boot-logo.png" alt="Spring Boot" style="width: 150px; height: auto; margin-bottom: 20px;">
+                <h3 style="font-size: 1.8em; margin: 10px 0;">Technology Stack</h3>
+                <p style="font-size: 1.2em;">Our project is built with Spring Boot, using IntelliJ as our development environment. We use MySQL as our database and Spring Security with JWT for authentication and authorization. We also use Swagger for API documentation.</p>
+            </div>
+            <div class="project-item" style="flex: 0 0 300px; margin: 20px;">
+                <img src="spring-security-logo.png" alt="Spring Security" style="width: 150px; height: auto; margin-bottom: 20px;">
+                <h3 style="font-size: 1.8em; margin: 10px 0;">Authentication and Authorization</h3>
+                <p style="font-size: 1.2em;">We use Spring Security with JWT for authentication and authorization, ensuring that our users' data is secure and protected.</p>
+            </div>
+            <div class="project-item" style="flex: 0 0 300px; margin: 20px;">
+                <img src="swagger-logo.png" alt="Swagger" style="width: 150px; height: auto; margin-bottom: 20px;">
+                <h3 style="font-size: 1.8em; margin: 10px 0;">API Documentation</h3>
+                <p style="font-size: 1.2em;">We use Swagger for API documentation, making it easy for developers to understand our API and build applications on top of it.</p>
+            </div>
+            <div class="project-item" style="flex: 0 0 300px; margin: 20px;">
+                <img src="testing-logo.png" alt="Testing" style="width: 150px; height: auto; margin-bottom: 20px;">
+                <h3 style="font-size: 1.8em; margin: 10px 0;">Testing</h3>
+                <p style="font-size: 1.2em;">We use automated testing to ensure that our code works as expected and to catch bugs before they become a problem. We also use GitHub for version control and testing, using pull requests and code reviews to ensure that new features and bug fixes are thoroughly tested before being merged into the main branch.</p>
+            </div>
+        </div>
+    </section>
+
+
+
 </section>
     <!-- Footer -->
     <footer style="background-color: #343a40; color: white; padding: 40px 0;">
