@@ -85,7 +85,70 @@ nav ul li a:hover {
         }
     }
 </style>
+<style>
+    .hero-slideshow {
+  position: relative;
+  height: 600px;
+}
 
+.slides-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.slides-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.slides-container img:first-child {
+  opacity: 1;
+}
+
+.hero-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+}
+
+.hero-content h1 {
+  font-size: 3em;
+  margin-bottom: 20px;
+  color: #007bff;
+  animation: rainbow 5s infinite;
+}
+
+.hero-content p {
+  font-size: 1.2em;
+  margin-bottom: 30px;
+  color: #007bff;
+  animation: rainbow 5s infinite;
+}
+
+.hero-content .cta-buttons a {
+  background-color: #007bff;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: white;
+  margin-right: 10px;
+}
+
+.hero-content .cta-buttons a:last-child {
+  background-color: #28a745;
+}
+
+</style>
 
 </head>
 
@@ -111,17 +174,22 @@ nav ul li a:hover {
     </nav>
 </header>
 
-<!-- Hero Section -->
-<section class="hero" style="background-image: url('hero-background.jpg'); background-size: cover; background-position: center; height: 600px; position: relative; text-align: center; color: white;">
-    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-        <h1 style="font-size: 3em; margin-bottom: 20px; color: #007bff; animation: rainbow 5s infinite;">Find the Perfect Nanny for Your Family</h1>
-        <p style="font-size: 1.2em; margin-bottom: 30px;color: #007bff; animation: rainbow 5s infinite;">Your one-stop solution for professional and reliable childcare services</p>
+<section class="hero-slideshow">
+    <div class="slides-container">
+        <img th:src="@{/backg2.jpg}" alt="Slide 1">
+        <img th:src="@{/backg3.jpg}"alt="Slide 2">
+        <img th:src="@{/backg1.jpg}"alt="Slide 3">
+    </div>
+    <div class="hero-content">
+        <h1>Find the Perfect Nanny for Your Family</h1>
+        <p>Your one-stop solution for professional and reliable childcare services</p>
         <div class="cta-buttons">
-            <a href="/home/find_a_nanny" style="background-color: #007bff; padding: 10px 20px; text-decoration: none; color: white; margin-right: 10px;">Find a Nanny</a>
-            <a href="/home/apply_as_nanny" style="background-color: #28a745; padding: 10px 20px; text-decoration: none; color: white;">Apply as a Nanny</a>
+            <a href="/home/find_a_nanny">Find a Nanny</a>
+            <a href="/home/apply_as_nanny">Apply as a Nanny</a>
         </div>
     </div>
 </section>
+
 
 <!-- How It Works Section -->
 <section class="how-it-works" style="background-color: #f8f9fa; padding: 60px 0; text-align: center;">
@@ -207,6 +275,24 @@ nav ul li a:hover {
         var nav = document.querySelector('nav');
         nav.classList.toggle('show');
     }
+var slideIndex = 0;
+var slides = document.querySelectorAll('.slides-container img');
+var totalSlides = slides.length;
+
+function showSlides() {
+  slideIndex++;
+  if (slideIndex >= totalSlides) {
+    slideIndex = 0;
+  }
+  for (var i = 0; i < totalSlides; i++) {
+    slides[i].style.opacity = 0;
+  }
+  slides[slideIndex].style.opacity = 1;
+  setTimeout(showSlides, 5000);
+}
+
+showSlides();
+
 </script></body>
 
 </html>

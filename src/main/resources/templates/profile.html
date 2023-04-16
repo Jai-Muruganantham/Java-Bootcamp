@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -134,7 +134,7 @@ nav ul li a {
 <!-- Header -->
 <header style="background-color: #f8f9fa; padding: 20px;">
     <div class="logo" style="display: inline-block;">
-        <img src="logo.png" alt="Logo" style="max-height: 50px;">
+        <img th:src="@{/logo.png}"  alt="Logo" style="max-height: 50px;">
     </div>
     <nav style="display: inline-block; float: right;">
         <ul style="list-style-type: none; margin: 0; padding: 0; overflow: hidden;">
@@ -145,7 +145,7 @@ nav ul li a {
             <li style="display: inline; margin-right: 20px;"><a href="/home/testimonials" style="text-decoration: none; color: #333;">Testimonials</a></li>
             <li style="display: inline; margin-right: 20px;"><a href="/home/blog" style="text-decoration: none; color: #333;">Blog</a></li>
             <li style="display: inline; margin-right: 20px;"><a href="/home/contact_us" style="text-decoration: none; color: #333;">Contact Us</a></li>
-            <li style="display: inline; margin-right: 20px;"><a href="/home/contact_us" style="text-decoration: none; color: #333;">Profile</a></li>
+            <li style="display: inline; margin-right: 20px;"><a href="/home/contact_us" style="text-decoration: none; color: #333;">Profile/History</a></li>
         </ul>
 
     </nav>
