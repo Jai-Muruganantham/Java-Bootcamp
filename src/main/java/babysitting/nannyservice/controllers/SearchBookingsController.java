@@ -39,6 +39,8 @@ public class SearchBookingsController {
         return "list_filtered_bookings";
     }
 
+
+    // should add pop up window "are you sure you want to cancel booking"
     @PostMapping("/showBookingsForUser")
     public String cancelBooking(@RequestParam("id") Integer id, ModelMap modelMap) {
         cancelBookingService.cancelBooking(id);
