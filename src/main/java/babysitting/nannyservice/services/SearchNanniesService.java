@@ -23,6 +23,11 @@ public class SearchNanniesService {
     @Autowired
     private SearchNanniesRequestValidator validator;
 
+    public SearchNanniesService(JpaNannyRepository repository, SearchNanniesRequestValidator validator) {
+        this.repository = repository;
+        this.validator = validator;
+    }
+
     public SearchNannyResponse execute(SearchNanniesRequest request) {
         List<CoreError> errors = validator.validate(request);
         if (!errors.isEmpty()) {
