@@ -142,7 +142,7 @@ nav ul li a:hover {
 <!-- Header -->
 <header style="background-color: #f8f9fa; padding: 20px;">
     <div class="logo" style="display: inline-block;">
-        <img src="@{/logo.png}"  alt="Logo" style="max-height: 50px;">
+        <img th:src="@{/logo.png}"  alt="Logo" style="max-height: 50px;">
     </div>
     <nav style="display: inline-block; float: right;">
         <ul style="list-style-type: none; margin: 0; padding: 0; overflow: hidden;">
@@ -171,11 +171,12 @@ nav ul li a:hover {
 </section>
 <!-- Search Results Section -->
 <section class="search-results" style="padding: 60px 0; text-align: center;">
-    <h2 style="font-size: 2.5em; margin-bottom: 40px;">Search Results</h2>
+    <h2 style="font-size: 2.5em; margin-bottom: 40px;">Search Results for</h2>
+    <h2 th:if="${nannies != null}" th:text="${nannies[0].city}" style="font-size: 2.5em; margin-bottom: 40px;"></h2>
     <!-- Display search results in cards -->
     <div th:if="${nannies != null}" style="display: flex; flex-wrap: wrap; justify-content: center;">
         <div th:each="nanny : ${nannies}" class="nanny-card" style="background-color: #B9D9EB;">
-            <img th:src="@{logo.png}" alt="Nanny Image" th:alt="${nanny.user.firstname + ' ' + nanny.user.lastname}">
+            <img th:src="@{'images/nannies/' + ${nanny.id} + '.jpg'}" alt="Nanny Image" th:alt="${nanny.user.firstname + ' ' + nanny.user.lastname}">
             <h3 th:text="${nanny.user.firstname + ' ' + nanny.user.lastname}"></h3>
             <p th:text="'Qualification: ' + ${nanny.qualification}"></p>
             <p class="bio-short" th:text="'Bio: ' + ${nanny.bio.substring(0, 100)}" style="white-space: pre-wrap; display: block;"></p>

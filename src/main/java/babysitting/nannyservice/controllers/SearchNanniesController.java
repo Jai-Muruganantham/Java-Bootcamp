@@ -23,7 +23,7 @@ public class SearchNanniesController {
     @GetMapping(value = "/searchNannies")
     public String showListNanniesByCityPage(ModelMap modelMap) {
         modelMap.addAttribute("request", new SearchNanniesRequest());
-        return "searchnannies";
+        return "find_a_nanny_v2";
     }
 
     @PostMapping("/searchNannies")
