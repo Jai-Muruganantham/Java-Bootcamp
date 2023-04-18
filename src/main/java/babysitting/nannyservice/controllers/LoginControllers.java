@@ -11,7 +11,7 @@ public class LoginControllers {
     }
     @GetMapping("/api/v1/auth/authenticate")
     public String loginPage() {
-        return "login_v2";
+        return "login";
     }
     @GetMapping("/welcome")
     public String welcome() {

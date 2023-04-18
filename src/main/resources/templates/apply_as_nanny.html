@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -118,27 +119,39 @@ nav ul li a:hover {
 
     <!-- Application Form -->
     <div style="width: 80%; margin: 0 auto;">
-        <form>
-            <label for="name">Full Name:</label>
-            <input type="text" id="name" name="name" required><br><br>
+           <form action="/home/apply_as_nanny" th:object="${request}" method="post">
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required><br><br>
+               <label for="userid">Insert user ID:</label>
+               <input type="number" id="userid" name="userid" required><br><br>
 
-            <label for="phone">Phone Number:</label>
-            <input type="tel" id="phone" name="phone" required><br><br>
+            <label for="city">City:</label>
+            <input type="text" id="city" name="city" required><br><br>
 
-            <label for="location">Location:</label>
-            <input type="text" id="location" name="location" required><br><br>
+           <label for="qualification">Insert your qualification certificate name or “no” in case you don’t have it:</label>
+           <input type="text" id="qualification" name="qualification" required><br><br>
 
-            <label for="experience">Years of Experience:</label>
-            <input type="number" id="experience" name="experience" min="0" required><br><br>
+            <label for="experience">Years of experience working with children:</label>
+               <select id="experience" name="experience" required>
+                   <option th:each="n : ${numbers}" th:value="${n}" th:text="${n}"></option>
+               </select>
+               <br><br>
 
             <label for="bio">Tell us about yourself:</label><br>
             <textarea id="bio" name="bio" rows="4" cols="50" required></textarea><br><br>
 
             <button type="submit" style="padding: 10px 20px; background-color: #007bff; color: white; border: none; cursor: pointer;">Submit Application</button>
         </form>
+    </div>
+
+
+</section>
+
+<section>
+    <div th:if="${errors}">
+        <h2>Errors:</h2>
+        <ul>
+            <li th:each="error : ${errors}" th:text="${error}"></li>
+        </ul>
     </div>
 </section>
 
@@ -152,15 +165,15 @@ nav ul li a:hover {
                 <li style="margin-bottom: 10px;"><a href="/home/about_us" style="text-decoration: none; color: white;">About Us</a></li>
                 <li style="margin-bottom: 10px;"><a href="/home/testimonials" style="text-decoration: none; color: white;">Testimonials</a></li>
                 <li style="margin-bottom: 10px;"><a href="/home/blog" style="text-decoration: none; color: white;">Blog</a></li>
-                <li style="margin-bottom: 10px;"><a href="/home/contact_us" style="text-decoration: none; color: white;">Contact Us</a></li>
+                <li style="margin-bottom: 10px;"><a href="contact_us" style="text-decoration: none; color: white;">Contact Us</a></li>
             </ul>
         </nav>
         <div class="social-media">
             <!-- Add your social media links here -->
-            <a href="your-facebook-link" style="margin-right: 10px;"><img src="facebook-icon.png" alt="Facebook" style="max-height: 30px;"></a>
-            <a href="your-twitter-link" style="margin-right: 10px;"><img src="twitter-icon.png" alt="Twitter" style="max-height: 30px;"></a>
-            <a href="your-instagram-link" style="margin-right: 10px;"><img src="instagram-icon.png" alt="Instagram" style="max-height: 30px;"></a>
-            <a href="your-linkedin-link"><img src="linkedin-icon.png" alt="LinkedIn" style="max-height: 30px;"></a>
+            <a href="your-facebook-link" style="margin-right: 10px;"><img th:src="@{social/fb.png}" alt="Facebook" style="max-height: 30px;"></a>
+            <a href="your-twitter-link" style="margin-right: 10px;"><img th:src="@{social/twitter.png}" alt="Twitter" style="max-height: 30px;"></a>
+            <a href="your-instagram-link" style="margin-right: 10px;"><img th:src="@{social/instagram.jpg}" alt="Instagram" style="max-height: 30px;"></a>
+            <a href="your-linkedin-link"><img th:src="@{social/linkedin.png}" alt="LinkedIn" style="max-height: 30px;"></a>
         </div>
         <div class="contact-info">
             <p>Email: info@yoursite.com</p>

@@ -24,7 +24,7 @@ public class AddNewNannyController {
     public String showAddNannyForm(ModelMap modelMap) {
         modelMap.addAttribute("request", new AddNewNannyRequest());
         modelMap.addAttribute("numbers", IntStream.rangeClosed(0, 30).boxed().collect(Collectors.toList()));
-        return "apply_as_nanny_2";
+        return "apply_as_nanny";
     }
 
     @PostMapping("/home/apply_as_nanny")
@@ -32,7 +32,7 @@ public class AddNewNannyController {
         AddNewNannyResponse response = service.execute(request);
         if (response.hasErrors()) {
             modelMap.addAttribute("errors", response.getErrors());
-            return "apply_as_nanny_2";
+            return "apply_as_nanny";
         } else {
             return "redirect:/success_add_nanny";
         }
