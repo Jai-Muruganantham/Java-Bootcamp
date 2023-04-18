@@ -7,7 +7,7 @@ import babysitting.nannyservice.repositories.JpaNannyRepository;
 import babysitting.nannyservice.repositories.UserRepository;
 import babysitting.nannyservice.requests.CreateBookingRequest;
 import babysitting.nannyservice.responses.CreateBookingResponse;
-import babysitting.nannyservice.services.BookingService;
+import babysitting.nannyservice.services.BookingEmailService;
 import babysitting.nannyservice.services.CreateBookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,13 +23,13 @@ public class CreateBookingController {
 
 
     @Autowired
-    private BookingService bookingService;
+    private BookingEmailService bookingService;
 
     @Autowired
     UserRepository userRepository;
 
 
-    public CreateBookingController(BookingService bookingService, UserRepository userRepository, JpaNannyRepository nannyRepository) {
+    public CreateBookingController(BookingEmailService bookingService, UserRepository userRepository, JpaNannyRepository nannyRepository) {
         this.bookingService = bookingService;
         this.userRepository = userRepository;
         this.nannyRepository = nannyRepository;
@@ -112,7 +112,7 @@ public class CreateBookingController {
     public class BookingController {
 
         @Autowired
-        private BookingService bookingService;
+        private BookingEmailService bookingService;
 
         @PostMapping
         public String createBooking(@ModelAttribute("booking") Booking booking) {
