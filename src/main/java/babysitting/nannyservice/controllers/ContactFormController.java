@@ -32,13 +32,6 @@ public class ContactFormController {
         System.out.println("Email: " + contactForm.getEmail());
         System.out.println("Message: " + contactForm.getMessage());
 
-//        // Save the form data to the database
-//        ContactForm contactFormEntity = new ContactForm();
-//        contactFormEntity.setName(contactForm.getName());
-//        contactFormEntity.setEmail(contactForm.getEmail());
-//        contactFormEntity.setMessage(contactForm.getMessage());
-//        contactFormRepository.save(contactFormEntity);
-
         // Send an email
         SimpleMailMessage mailMessage = new SimpleMailMessage();
         mailMessage.setTo("childcareservice.nanny@gmail.com"); // Replace with the email address you want to send the message to

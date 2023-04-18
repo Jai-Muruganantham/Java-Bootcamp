@@ -73,7 +73,6 @@ public class CreateBookingController {
             booking.setNanny(nanny);
             booking.setUser(user);
 
-            // Add any other necessary fields to the booking object
             // For example, if your Booking object has a startDate and endDate, you can set them like this:
             booking.setStartTime(request.getStarttime());
             booking.setEndTime(request.getEndtime());
