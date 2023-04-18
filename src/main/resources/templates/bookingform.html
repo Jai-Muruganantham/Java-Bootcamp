@@ -189,6 +189,26 @@ nav ul li a:hover {
             alert("Booking request is sent. Please wait for confirmation.");
         }
     });
+    document.addEventListener('DOMContentLoaded', () => {
+  const form = document.querySelector('form');
+
+  form.addEventListener('submit', (event) => {
+    // Create and insert the wait message
+    const waitMessage = document.createElement('p');
+    waitMessage.textContent = 'Please wait for booking confirmation...';
+    waitMessage.style.fontSize = '1.2em';
+    waitMessage.style.marginTop = '20px';
+    form.insertAdjacentElement('afterend', waitMessage);
+
+    // Delay the form submission to show the wait message
+    setTimeout(() => {
+      form.submit();
+    }, 1000); // Adjust the delay duration if needed
+
+    event.preventDefault();
+  });
+});
+
 </script>
 
 
