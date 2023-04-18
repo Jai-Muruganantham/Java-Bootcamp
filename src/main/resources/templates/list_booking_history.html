@@ -147,11 +147,11 @@ nav ul li a:hover {
 <section class="bookings" style="padding: 60px 0; text-align: center;">
     <h2 style="font-size: 2.5em; margin-bottom: 40px;">List of Bookings</h2>
     <div th:if="${message}">
-        <p th:text="${message}"></p>
+        <h2 th:text="${message}" style="padding: 5px 10px; background-color: #00FF00; color: white; border: none; cursor: pointer;"></h2>
     </div>
     <!-- Display bookings in cards -->
     <div th:if="${bookings != null}" style="display: flex; flex-wrap: wrap; justify-content: center;">
-        <div th:each="booking : ${bookings}" class="booking-card" style="background-color: #B9D9EB; margin: 15px; padding: 15px; width: 300px; border-radius: 5px;">
+        <div th:each="booking : ${bookings}" class="booking-card" style="background-color: #B9D9EB; margin: 15px; padding: 15px; width: 300px; border-radius: 5px; border: 1px solid black;">
             <h3 th:text="'Booking number: ' + ${booking.id}"></h3>
             <p th:text="'Creation date: ' + ${booking.timestamp}"></p>
             <p th:text="'City: ' + ${booking.nanny.city}"></p>

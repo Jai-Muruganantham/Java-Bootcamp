@@ -24,7 +24,7 @@ public class SearchBookingsController {
     CancelBookingService cancelBookingService;
 
     @GetMapping("/showBookingsForUser")
-    public String showFilteredBookingRequest(@RequestParam(defaultValue = "6") Integer bookeruserid,
+    public String showFilteredBookingRequest(@RequestParam(defaultValue = "25") Integer bookeruserid,
                                              @RequestParam(required = false) boolean cancelled,
                                              ModelMap modelMap) {
         SearchBookingRequest request = new SearchBookingRequest();

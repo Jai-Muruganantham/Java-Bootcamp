@@ -32,6 +32,8 @@ public class SecurityConfiguration {
             .permitAll()
             .requestMatchers("/success_add_nanny")
             .permitAll()
+            .requestMatchers("/createBooking")
+            .permitAll()
 //            .requestMatchers("/**")
 //            .permitAll()
             .requestMatchers("/**.png","/**.jpg","images/**","social/**")
