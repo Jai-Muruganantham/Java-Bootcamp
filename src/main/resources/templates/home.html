@@ -197,17 +197,17 @@ nav ul li a:hover {
     <div style="display: flex; justify-content: space-around;">
         <!-- Add appropriate icons or images for each step -->
         <div class="step" style="flex: 1; padding: 0 20px;">
-            <img src="step1-icon.png" alt="Step 1 Icon" style="max-height: 100px;">
+            <img th:src="@{/1.png}" alt="Step 1 Icon" style="max-height: 100px;">
             <h3 style="font-size: 1.8em; margin: 20px 0;">Create a Profile</h3>
             <p>Parents and nannies sign up and create detailed profiles.</p>
         </div>
         <div class="step" style="flex: 1; padding: 0 20px;">
-            <img src="step2-icon.png" alt="Step 2 Icon" style="max-height: 100px;">
+            <img th:src="@{/2.png}" alt="Step 2 Icon" style="max-height: 100px;">
             <h3 style="font-size: 1.8em; margin: 20px 0;">Search and Connect</h3>
             <p>Parents search for nannies based on their requirements, and nannies browse job postings.</p>
         </div>
         <div class="step" style="flex: 1; padding: 0 20px;">
-            <img src="step3-icon.png" alt="Step 3 Icon" style="max-height: 100px;">
+            <img th:src="@{/3.png}" alt="Step 3 Icon" style="max-height: 100px;">
             <h3 style="font-size: 1.8em; margin: 20px 0;">Interview and Hire</h3>
             <p>Both parties communicate, conduct interviews, and finalize employment details.</p>
         </div>
@@ -251,10 +251,10 @@ nav ul li a:hover {
         </nav>
         <div class="social-media">
             <!-- Add your social media links here -->
-            <a href="your-facebook-link" style="margin-right: 10px;"><img src="facebook-icon.png" alt="Facebook" style="max-height: 30px;"></a>
-            <a href="your-twitter-link" style="margin-right: 10px;"><img src="twitter-icon.png" alt="Twitter" style="max-height: 30px;"></a>
-            <a href="your-instagram-link" style="margin-right: 10px;"><img src="instagram-icon.png" alt="Instagram" style="max-height: 30px;"></a>
-            <a href="your-linkedin-link"><img src="linkedin-icon.png" alt="LinkedIn" style="max-height: 30px;"></a>
+            <a href="your-facebook-link" style="margin-right: 10px;"><img th:src="@{social/fb.png}" alt="Facebook" style="max-height: 30px;"></a>
+            <a href="your-twitter-link" style="margin-right: 10px;"><img th:src="@{social/twitter.png}" alt="Twitter" style="max-height: 30px;"></a>
+            <a href="your-instagram-link" style="margin-right: 10px;"><img th:src="@{social/instagram.jpg}" alt="Instagram" style="max-height: 30px;"></a>
+            <a href="your-linkedin-link"><img th:src="@{social/linkedin.png}" alt="LinkedIn" style="max-height: 30px;"></a>
         </div>
         <div class="contact-info">
             <p>Email: info@yoursite.com</p>

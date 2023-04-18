@@ -36,7 +36,7 @@ public class SearchBookingsController {
             modelMap.addAttribute("message", "Booking was cancelled.");
         }
 
-        return "list_filtered_bookings";
+        return "list_booking_history";
     }
 
 

@@ -145,7 +145,7 @@ nav ul li a {
             <li style="display: inline; margin-right: 20px;"><a href="/home/testimonials" style="text-decoration: none; color: #333;">Testimonials</a></li>
             <li style="display: inline; margin-right: 20px;"><a href="/home/blog" style="text-decoration: none; color: #333;">Blog</a></li>
             <li style="display: inline; margin-right: 20px;"><a href="/home/contact_us" style="text-decoration: none; color: #333;">Contact Us</a></li>
-            <li style="display: inline; margin-right: 20px;"><a href="/home/contact_us" style="text-decoration: none; color: #333;">Profile/History</a></li>
+            <li style="display: inline; margin-right: 20px;"><a id="viewHistory"style="text-decoration: none; color: #333;"href="#">Profile/History</a></li>
         </ul>
 
     </nav>
@@ -247,6 +247,45 @@ nav ul li a {
         var nav = document.querySelector('nav');
         nav.classList.toggle('show');
     }
-</script></body>
+</script>
+<script>
+  // Attach an event listener to the view nannies link
+  document.getElementById("viewHistory").addEventListener('click', async function(event) {
+    event.preventDefault();
+
+    const token = localStorage.getItem('token');
+    if (!token) {
+      alert('Token not found');
+      return;
+    }
+
+    try {
+      const response = await fetch('http://localhost:8080/showBookingsForUser', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + token
+        }
+      });
+
+      if (response.ok) {
+        const result = await response.text();
+        console.log(result);
+        document.open();
+        document.write(result);
+        document.close();
+      } else {
+        const error = await response.json();
+        console.error('Error details:', error);
+        alert('Failed to access the show all nannies page: ' + JSON.stringify(error));
+      }
+    } catch (error) {
+      console.error('Error details:', error);
+      alert('Error occurred while accessing the show all nannies page: ' + JSON.stringify(error));
+    }
+  });
+
+</script>
+</body>
 
 </html>

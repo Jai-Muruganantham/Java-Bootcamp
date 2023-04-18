@@ -114,35 +114,37 @@ nav ul li a:hover {
   </nav>
 </header>
 
-<section class="container mt-5">
-  <h1>Booking Form</h1>
-  <form th:action="@{/createBooking}" th:object="${request}" method="post">
-    <input type="hidden" th:field="*{timestamp}" th:value="${#temporals.format(#temporals.createNow(), 'yyyy-MM-dd HH:mm:ss')}" />
-    <input type="hidden" th:field="*{nannyid}" th:value="${nannyid}" />
-    <input type="hidden" th:field="*{bookeruserid}" />
+  <section class="container mt-5">
+    <h1>Booking Form</h1>
+    <div th:if="${errors}" class="alert alert-danger mt-3">
+      <ul>
+        <li th:each="error : ${errors}">
+          <span th:text="${error.field + ': ' + error.message}"></span>
+        </li>
+      </ul>
+    </div>
+    <form th:action="@{/createBooking}" th:object="${request}" method="post">
+      <input type="hidden" th:field="*{timestamp}" th:value="${#temporals.format(#temporals.createNow(), 'yyyy-MM-dd HH:mm:ss')}" />
+      <input type="hidden" th:field="*{nannyid}" th:value="${nannyid}" />
+      <input type="hidden" th:field="*{bookeruserid}" />
 
-    <div class="form-group">
-      <label for="message">Message:</label>
-      <input type="text" class="form-control" id="message" th:field="*{message}" />
-    </div>
-    <div class="form-group">
-      <label for="starttime">Start Time:</label>
-      <input type="datetime-local" class="form-control" id="starttime" th:field="*{starttime}" />
-    </div>
-    <div class="form-group">
-      <label for="endtime">End Time:</label>
-      <input type="datetime-local" class="form-control" id="endtime" th:field="*{endtime}" />
-    </div>
-    <button type="submit" class="btn btn-primary">Book</button>
-  </form>
-</section>
+      <div class="form-group">
+        <label for="message">Message:</label>
+        <input type="text" class="form-control" id="message" th:field="*{message}" />
+      </div>
+      <div class="form-group">
+        <label for="starttime">Start Time:</label>
+        <input type="datetime-local" class="form-control" id="starttime" th:field="*{starttime}" />
+      </div>
+      <div class="form-group">
+        <label for="endtime">End Time:</label>
+        <input type="datetime-local" class="form-control" id="endtime" th:field="*{endtime}" />
+      </div>
+      <button type="submit" class="btn btn-primary">Book</button>
+    </form>
+  </section>
 <section>
-  <div th:if="${errors}">
-    <h2>Errors:</h2>
-    <ul>
-      <li th:each="error : ${errors}" th:text="${error}"></li>
-    </ul>
-  </div>
+  <h1></h1>
 </section>
 <!-- Footer -->
 <footer style="background-color: #343a40; color: white; padding: 40px 0;">
@@ -187,6 +189,26 @@ nav ul li a:hover {
             alert("Booking request is sent. Please wait for confirmation.");
         }
     });
+    document.addEventListener('DOMContentLoaded', () => {
+  const form = document.querySelector('form');
+
+  form.addEventListener('submit', (event) => {
+    // Create and insert the wait message
+    const waitMessage = document.createElement('p');
+    waitMessage.textContent = 'Please wait for booking confirmation...';
+    waitMessage.style.fontSize = '1.2em';
+    waitMessage.style.marginTop = '20px';
+    form.insertAdjacentElement('afterend', waitMessage);
+
+    // Delay the form submission to show the wait message
+    setTimeout(() => {
+      form.submit();
+    }, 1000); // Adjust the delay duration if needed
+
+    event.preventDefault();
+  });
+});
+
 </script>
 
 

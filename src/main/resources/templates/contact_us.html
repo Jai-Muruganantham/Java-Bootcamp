@@ -33,7 +33,7 @@
     <h1 style="font-size: 3em; margin-bottom: 30px;">Contact Us</h1>
     <p style="font-size: 1.2em; max-width: 800px; margin: 0 auto;">Have a question or need assistance? Please feel free to get in touch with us using the contact form below, and we'll get back to you as soon as possible.</p>
     <div style="max-width: 600px; margin: 40px auto;">
-        <form action="/submitContactForm" method="post" enctype="application/json">
+        <form id="contact-form" action="/submitContactForm" method="post" enctype="application/json">
         <div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
                 <div style="flex: 0 0 48%; margin-bottom: 20px;">
                     <label for="name" style="display: block; margin-bottom: 5px;">Name</label>
@@ -50,6 +50,7 @@
             </div>
             <button type="submit" style="padding: 10px 20px; background-color: #007bff; color: white; border: none; cursor: pointer; border-radius: 5px;">Send Message</button>
         </form>
+        <p id="wait-message" style="display: none; font-size: 1.2em; margin-top: 20px;">Please wait while we send your message...</p>
     </div>
 </section>
 
@@ -90,24 +91,38 @@
     </div>
 </footer>
 <script>
-document.querySelector('form').addEventListener('submit', async (event) => {
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.querySelector('#contact-form');
+
+  form.addEventListener('submit', async (event) => {
     event.preventDefault();
 
     const formData = new FormData(event.target);
     const data = JSON.stringify(Object.fromEntries(formData));
 
+    // Show the wait message
+    document.querySelector('#wait-message').style.display = 'block';
+
     const response = await fetch('/submitContactForm', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: data
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: data
     });
 
+    // Hide the wait message
+    document.querySelector('#wait-message').style.display = 'none';
+
     if (response.ok) {
-        alert('Form submitted successfully');
+      alert('Form submitted successfully');
+
+      // Reset the form
+      form.reset();
     } else {
-        alert('Error submitting the form');
+      alert('Error submitting the form');
     }
+  });
 });
+
 </script>
 
 </body>
