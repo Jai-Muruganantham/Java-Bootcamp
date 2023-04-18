@@ -74,4 +74,6 @@ public class CreateBookingRequest {
     public void setEndtime(LocalDateTime endtime) {
         this.endtime = endtime;
     }
+
+
 }

@@ -18,11 +18,11 @@ public class ListAllNanniesService {
     private final JpaNannyRepository nannyRepository;
 
     @Autowired
-    public ListAllNanniesService(JpaNannyRepository nannyRepository){
+    public ListAllNanniesService(JpaNannyRepository nannyRepository) {
         this.nannyRepository = nannyRepository;
     }
 
-    public ListAllNanniesResponse execute(ListAllNanniesRequest request){
+    public ListAllNanniesResponse execute(ListAllNanniesRequest request) {
         List<Nanny> nannies = nannyRepository.findAll();
         return new ListAllNanniesResponse(nannies);
     }

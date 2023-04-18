@@ -36,7 +36,7 @@ public class ListAllNanniesServiceTest {
 
         ListAllNanniesResponse response = service.execute(request);
 
-        assertEquals(response.getNannies().size(),2);
+        assertEquals(response.getNannies().size(), 2);
 
     }
 

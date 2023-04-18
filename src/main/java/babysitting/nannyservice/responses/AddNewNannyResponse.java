@@ -1,17 +1,18 @@
 package babysitting.nannyservice.responses;
 
 import babysitting.nannyservice.domain.Nanny;
+
 import java.util.List;
 
-public class AddNewNannyResponse extends CoreResponse{
+public class AddNewNannyResponse extends CoreResponse {
 
     private Nanny newNanny;
 
-    public AddNewNannyResponse (List<CoreError> errors){
+    public AddNewNannyResponse(List<CoreError> errors) {
         super(errors);
     }
 
-    public AddNewNannyResponse (Nanny newNanny){
+    public AddNewNannyResponse(Nanny newNanny) {
         this.newNanny = newNanny;
     }
 

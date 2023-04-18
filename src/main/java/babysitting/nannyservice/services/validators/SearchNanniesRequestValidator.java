@@ -12,13 +12,11 @@ import java.util.Optional;
 public class SearchNanniesRequestValidator {
 
 
-
     public List<CoreError> validate(SearchNanniesRequest request) {
         List<CoreError> errors = new ArrayList<>();
         validateCity(request).ifPresent(errors::add);
         return errors;
     }
-
 
     private Optional<CoreError> validateCity(SearchNanniesRequest request) {
         return (request.getCity() == null || request.getCity().isEmpty())

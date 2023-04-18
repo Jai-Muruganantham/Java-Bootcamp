@@ -7,7 +7,8 @@ abstract class CoreResponse {
     private List<CoreError> errors;
     private boolean success;
 
-    public CoreResponse() { }
+    public CoreResponse() {
+    }
 
     public CoreResponse(List<CoreError> errors) {
         this.errors = errors;
@@ -24,6 +25,7 @@ abstract class CoreResponse {
     public CoreResponse(boolean success) {
         this.success = success;
     }
+
     public boolean isSuccess() {
         return success;
     }

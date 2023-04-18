@@ -8,11 +8,11 @@ public class CreateBookingResponse extends CoreResponse {
 
     private Booking newBooking;
 
-    public CreateBookingResponse (List<CoreError> errors){
+    public CreateBookingResponse(List<CoreError> errors) {
         super(errors);
     }
 
-    public CreateBookingResponse (Booking newBooking){
+    public CreateBookingResponse(Booking newBooking) {
         this.newBooking = newBooking;
     }
 

@@ -56,15 +56,9 @@ public class CreateBookingService {
     }
 
 
-
-
     public List<Booking> findAll() {
         return bookingRepository.findAll();
     }
-
-    //public Booking save(Booking booking) {
-    //    return bookingRepository.save(booking);
-    //}
 
     public Booking findById(Long id) {
         return bookingRepository.findById(id).orElse(null);
@@ -73,7 +67,6 @@ public class CreateBookingService {
     public void deleteById(Long id) {
         bookingRepository.deleteById(id);
     }
-
 
 
 }

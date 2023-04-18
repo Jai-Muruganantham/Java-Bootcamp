@@ -39,15 +39,7 @@ public class SearchNanniesService {
 
     private List<Nanny> search(SearchNanniesRequest request) {
         List<Nanny> nannies = new ArrayList<>();
-      /*  if (request.isCityProvided() && !request.isNameProvided()) {
-            nannies = repository.findByCity(request.getCity());
-        }
-        if (!request.isCityProvided() && request.isNameProvided()) {
-            nannies = repository.findByName(request.getName());
-        }
-        if (request.isCityProvided() && request.isNameProvided()) {
-            nannies = repository.findByNameAndCity(request.getName(), request.getCity());
-        }*/
+
         if (request.isCityProvided()) {
             nannies = repository.findByCity(request.getCity());
         }
@@ -57,8 +49,6 @@ public class SearchNanniesService {
         }
         return nannies;
     }
-
-    //using search by name as didnt managed to do it with id.
 
 
 }

@@ -27,7 +27,7 @@ public class AddNewNannyController {
         return "apply_as_nanny_2";
     }
 
-   @PostMapping("/home/apply_as_nanny")
+    @PostMapping("/home/apply_as_nanny")
     public String processAddNannyProfileRequest(@ModelAttribute(value = "request") AddNewNannyRequest request, ModelMap modelMap) {
         AddNewNannyResponse response = service.execute(request);
         if (response.hasErrors()) {

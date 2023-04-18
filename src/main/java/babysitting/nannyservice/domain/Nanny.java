@@ -19,9 +19,6 @@ import jakarta.persistence.*;
         @Column(name = "city", nullable = false)
         private String city;
 
-       /* @Column (name = "userid", nullable = false)
-        private Long userid;*/
-
         @OneToOne(fetch = FetchType.LAZY)
         @JoinColumn(name = "userid")
         private User user;
@@ -91,6 +88,8 @@ import jakarta.persistence.*;
         public void setExperience(int experience) {
             this.experience = experience;
         }
+
+
     }
 
 

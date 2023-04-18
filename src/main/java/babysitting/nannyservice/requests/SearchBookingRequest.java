@@ -8,7 +8,8 @@ public class SearchBookingRequest {
         this.id = bookerId;
     }
 
-    public SearchBookingRequest() {}
+    public SearchBookingRequest() {
+    }
 
     public Integer getId() {
         return id;

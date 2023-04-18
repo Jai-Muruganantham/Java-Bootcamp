@@ -10,9 +10,8 @@ import java.util.Optional;
 @Repository
 public interface JpaNannyRepository extends JpaRepository<Nanny, Long> {
 
-    //List<Nanny> findById (Long id); - seems to be overlap with standard crud functionality?
 
-    List<Nanny> findByCity (String city);
+    List<Nanny> findByCity(String city);
 
     boolean existsByUserId(Integer userid);
 

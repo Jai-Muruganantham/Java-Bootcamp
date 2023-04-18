@@ -44,6 +44,7 @@ public class SearchNanniesRequest {
     public boolean isCityProvided() {
         return this.city != null && !this.city.isEmpty();
     }
+
     public boolean isIdProvided() {
         return this.id != null && this.id > 0;
     }

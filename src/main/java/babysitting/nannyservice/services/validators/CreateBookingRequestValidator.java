@@ -15,6 +15,8 @@ import java.util.Optional;
 @Component
 public class CreateBookingRequestValidator {
 
+    //! should add validation which takes booking status, if cancelled, then no overlap logic is called
+
     @Autowired
     private JpaBookingRepository bookingRepository;
 

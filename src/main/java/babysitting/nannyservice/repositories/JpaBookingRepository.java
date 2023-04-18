@@ -12,8 +12,6 @@ import java.util.List;
 @Repository
 public interface JpaBookingRepository extends JpaRepository<Booking, Long> {
 
-   // List<Booking> findByNannyId(Long nannyId);
-
     @Query("SELECT b FROM Booking b WHERE b.nanny.id = :nannyid")
     List<Booking> findByNannyId(@Param("nannyid") Long nannyid);
 

@@ -57,4 +57,15 @@ public class AddNewNannyRequest {
     public void setExperience(Integer experience) {
         this.experience = experience;
     }
+
+    @Override
+    public String toString() {
+        return "AddNewNannyRequest{" +
+                "userid=" + userid +
+                ", city='" + city + '\'' +
+                ", qualification='" + qualification + '\'' +
+                ", bio='" + bio + '\'' +
+                ", experience=" + experience +
+                '}';
+    }
 }

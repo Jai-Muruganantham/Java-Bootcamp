@@ -28,48 +28,15 @@ public class SearchNanniesController {
 
     @PostMapping("/searchNannies")
     public String processSearchNanniesRequest(@ModelAttribute(value = "request")
-                                                  SearchNanniesRequest request, ModelMap modelMap) {
+                                              SearchNanniesRequest request, ModelMap modelMap) {
         SearchNannyResponse response = service.execute(request);
-        if (response.hasErrors()){
+        if (response.hasErrors()) {
             modelMap.addAttribute("errors", response.getErrors());
         } else {
-            modelMap.addAttribute("nannies", response.getNannies()); //"nannies" is the reference in html template
+            modelMap.addAttribute("nannies", response.getNannies());
         }
         return "find_a_nanny_v2";
     }
-
-     /* @GetMapping("/listNanniesByCity")
-    public String showNanniesByCity(@RequestParam("city") String city, Model model) {
-        List<Nanny> nannies = listAllNanniesService.getNanniesByCity(city);
-        model.addAttribute("nannies", nannies);
-        return "nannies";
-    }*/
-
-
-
-   /* @GetMapping("/showListNanniesByCity")
-    public String showListNanniesByCity(Model model) {
-        List<Nanny> nannies = listAllNanniesService.getNannies();
-        model.addAttribute("nannies", nannies);
-        return "showlistnanniesbycity";
-    }*/
-
-
-/*
-
-
-    @PostMapping("/addStudent")
-    public String processAddStudentRequest(@ModelAttribute(value = "request") AddStudentRequest request, ModelMap modelMap) {
-        AddStudentResponse response = addStudentService.execute(request);
-        if (response.hasErrors()) {
-            modelMap.addAttribute("errors", response.getErrors());
-            return "addStudent";
-        } else {
-            return "redirect:/welcome";
-        }
-    }*/
-
-
 
 
 }
