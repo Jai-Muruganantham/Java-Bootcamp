@@ -30,6 +30,8 @@ public class SecurityConfiguration {
             .authorizeHttpRequests()
             .requestMatchers("/api/v1/auth/**")
             .permitAll()
+            .requestMatchers("/success_add_nanny")
+            .permitAll()
 //            .requestMatchers("/**")
 //            .permitAll()
             .requestMatchers("/**.png","/**.jpg","images/**","social/**")
