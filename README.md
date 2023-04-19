@@ -40,22 +40,6 @@ Postman
 
 To get a local copy up and running, follow these simple steps.
 
-Prerequisites
-
-Make sure you have the following software installed on your machine:
-
-Java Development Kit (JDK) version 11 or higher
-
-MySQL Server
-
-Installation
-
-Clone the repository:
-
-bash
-
-Copy code
-
 git clone https://github.com/Jai-Muruganantham/Java-Bootcamp.git
 
 Import the project into IntelliJ IDEA:
